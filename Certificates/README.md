@@ -1,20 +1,23 @@
-# Repositório de Certificados
 
-Este diretório é o repositório central para todos os certificados e credenciais que adquiri ao longo da minha jornada profissional e de aprendizado.
+[Ver esta página em Português](README_pt-br.md)
 
-## Organização
+# Certificate Repository
 
-Os certificados estão categorizados em subdiretórios, de acordo com o tipo de evento ou programa em que foram obtidos:
+This is the central repository for all certificates and credentials I have acquired throughout my professional and learning journey.
 
--   **01_Certifications:** Certificações formais, geralmente obtidas após aprovação em um exame.
--   **02_Training:** Certificados de participação ou conclusão de treinamentos específicos.
--   **03_Bootcamps:** Certificados de conclusão de programas de formação intensiva (bootcamps).
--   **04_Courses:** Certificados de conclusão de cursos online ou presenciais.
--   **05_Immersions:** Certificados de participação em imersões e eventos práticos.
--   **06_Workshops:** Certificados de participação em workshops.
+## Organization
 
-## Padrão de Nomenclatura
+The certificates are categorized into subdirectories, according to the type of event or program from which they were obtained:
 
-Todos os arquivos de certificado seguem um padrão para facilitar a identificação:
+-   **01_Certifications:** Formal certifications, usually obtained after passing an official exam.
+-   **02_Formacoes:** Certificates of completion from Professional Qualifications, which are structured programs for a complete skill set.
+-   **03_Bootcamps:** Certificates of completion from intensive training programs (bootcamps).
+-   **04_Courses:** Certificates of completion from online or in-person courses.
+-   **05_Immersions:** Certificates of participation from immersions and hands-on events.
+-   **06_Workshops:** Certificates of participation from workshops.
 
-`[Ano]_[Instituição]_[Nome_do_Certificado].pdf`
+## Naming Convention
+
+All certificate files follow a standard pattern for easy identification:
+
+`[Year]_[Institution]_[Certificate_Name].pdf`

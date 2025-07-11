@@ -1,5 +1,5 @@
-# 04 - Certificados de Cursos
+[Ver esta página em Português](README_pt-br.md)
 
-## Descrição
+# 04 - Course Certificates
 
-Este diretório armazena os **certificados de conclusão de cursos**, sejam eles online ou presenciais. Serve como um registro formal do conhecimento adquirido em diversas plataformas e instituições.
+This directory stores **certificates of completion from courses**, whether online or in-person. It serves as a formal record of the knowledge acquired from various platforms and institutions.

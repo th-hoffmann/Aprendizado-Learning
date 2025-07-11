@@ -1,5 +1,5 @@
-# 06 - Certificados de Workshops
+[Ver esta página em Português](README_pt-br.md)
 
-## Descrição
+# 06 - Workshop Certificates
 
-Este diretório armazena os **certificados de participação em workshops**. Workshops são eventos curtos e focados, e estes certificados atestam o comparecimento e a participação nas atividades.
+This directory stores **certificates of participation from workshops**. Workshops are short, focused events, and these certificates attest to attendance and participation in the activities.

@@ -1,5 +1,5 @@
-# 03 - Certificados de Bootcamps
+[Ver esta página em Português](README_pt-br.md)
 
-## Descrição
+# 03 - Bootcamp Certificates
 
-Este diretório armazena os **certificados de conclusão de bootcamps**. Bootcamps são programas de formação intensiva e imersiva, e estes certificados validam a finalização bem-sucedida desses programas.
+This directory stores **certificates of completion from bootcamps**. Bootcamps are intensive and immersive training programs, and these certificates validate the successful completion of such programs.

@@ -1,5 +1,5 @@
-# 05 - Certificados de Imersões
+[Ver esta página em Português](README_pt-br.md)
 
-## Descrição
+# 05 - Immersion Certificates
 
-Este diretório armazena os **certificados de participação em imersões**. Refere-se a eventos práticos e intensivos, como semanas de programação, onde o foco é o desenvolvimento de um projeto em um curto período.
+This directory stores **certificates of participation from immersions**. This refers to hands-on, intensive events like coding weeks, where the focus is on developing a project in a short period.

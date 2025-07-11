@@ -1,5 +1,5 @@
-# 01 - Certificações Oficiais
+[Ver esta página em Português](README_pt-br.md)
 
-## Descrição
+# 01 - Official Certifications
 
-Este diretório armazena **certificados oficiais e de proficiência**. Geralmente, são credenciais obtidas através da aprovação em exames formais que validam conhecimento em uma tecnologia ou área específica (ex: certificações da AWS, Google Cloud, Microsoft, etc.).
+This directory stores **official and proficiency certificates**. These are typically credentials obtained by passing formal exams that validate knowledge in a specific technology or area (e.g., AWS, Google Cloud, Microsoft certifications, etc.).

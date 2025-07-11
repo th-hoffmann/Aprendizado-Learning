@@ -1,5 +1,5 @@
-# 02 - Certificados de Treinamentos
+[Ver esta página em Português](README_pt-br.md)
 
-## Descrição
+# 02 - Professional Qualification Certificates
 
-Este diretório armazena os **certificados de conclusão de treinamentos**. Estes documentos comprovam a participação em programas focados no desenvolvimento de habilidades práticas e específicas.
+This directory stores **certificates of completion from Professional Qualifications**. A professional qualification represents a structured set of courses and projects that build in-depth knowledge and a complete skill set in a specific professional area.

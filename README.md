@@ -54,56 +54,17 @@ Organized by technology domains:
 [![Learning Areas](https://img.shields.io/badge/Learning%20Areas-6-purple?style=flat-square&logo=target)](./Learning-Journey)
 [![Last Updated](https://img.shields.io/badge/Last%20Updated-July%202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+### 📊 Learning Areas Overview
 
-  <!-- DevOps Badge -->
-  <div style="background: linear-gradient(135deg, #ff7e5f, #feb47b); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <div style="font-size: 30px; margin-bottom: 10px;">🔧</div>
-    <h3 style="margin: 0; font-size: 16px;">DevOps</h3>
-    <p style="margin: 5px 0; opacity: 0.9;">0 Activities</p>
-    <p style="margin: 0; font-size: 12px;">CI/CD • IaC • Containers</p>
-  </div>
+| 🎯 Area | 📚 Activities | 🛠️ Specializations |
+|---------|---------------|-------------------|
+| 🔧 **DevOps** | 0 | CI/CD • IaC • Containers |
+| ☁️ **Cloud Computing** | 0 | AWS • Azure • Infrastructure |
+| 🛡️ **Security** | 0 | CyberSec • Pentest • Compliance |
+| 🐧 **Linux Infrastructure** | **2** | System Admin • Networks • Automation |
+| 💻 **Programming** | 0 | Python • JavaScript • APIs |
+| 📊 **Data Science** | 0 | Analytics • ML • Visualization |
 
-  <!-- Cloud Computing Badge -->
-  <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <div style="font-size: 30px; margin-bottom: 10px;">☁️</div>
-    <h3 style="margin: 0; font-size: 16px;">Cloud Computing</h3>
-    <p style="margin: 5px 0; opacity: 0.9;">0 Activities</p>
-    <p style="margin: 0; font-size: 12px;">AWS • Azure • Infrastructure</p>
-  </div>
-
-  <!-- Security Badge -->
-  <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <div style="font-size: 30px; margin-bottom: 10px;">🛡️</div>
-    <h3 style="margin: 0; font-size: 16px;">Security</h3>
-    <p style="margin: 5px 0; opacity: 0.9;">0 Activities</p>
-    <p style="margin: 0; font-size: 12px;">CyberSec • Pentest • Compliance</p>
-  </div>
-
-  <!-- Linux Infrastructure Badge -->
-  <div style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <div style="font-size: 30px; margin-bottom: 10px;">🐧</div>
-    <h3 style="margin: 0; font-size: 16px;">Linux Infrastructure</h3>
-    <p style="margin: 5px 0; opacity: 0.9;">2 Activities</p>
-    <p style="margin: 0; font-size: 12px;">System Admin • Networks • Automation</p>
-  </div>
-
-  <!-- Programming Badge -->
-  <div style="background: linear-gradient(135deg, #43e97b, #38f9d7); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <div style="font-size: 30px; margin-bottom: 10px;">💻</div>
-    <h3 style="margin: 0; font-size: 16px;">Programming</h3>
-    <p style="margin: 5px 0; opacity: 0.9;">0 Activities</p>
-    <p style="margin: 0; font-size: 12px;">Python • JavaScript • APIs</p>
-  </div>
-
-  <!-- Data Science Badge -->
-  <div style="background: linear-gradient(135deg, #fa709a, #fee140); color: white; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    <div style="font-size: 30px; margin-bottom: 10px;">📊</div>
-    <h3 style="margin: 0; font-size: 16px;">Data Science</h3>
-    <p style="margin: 5px 0; opacity: 0.9;">0 Activities</p>
-    <p style="margin: 0; font-size: 12px;">Analytics • ML • Visualization</p>
-  </div>
-
-</div>
+> 🎯 **Focus Area**: Currently building expertise in **Linux Infrastructure** with 2 completed courses
 
 ---

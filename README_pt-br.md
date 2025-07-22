@@ -1,8 +1,12 @@
-[View this page in English](README.md)
+<small>[View this page in English](README.md)</small>
+
+<br>
 
 # 🎓 Meu Portfólio de Aprendizado
 
 Olá! Bem-vindo à minha jornada de aprendizado contínuo. Este repositório serve como um portfólio abrangente documentando meu desenvolvimento profissional em tecnologia, com foco em **DevOps**, **Cloud Computing**, **Segurança** e **Infraestrutura Linux**.
+
+<br>
 
 ## 🎯 Propósito
 
@@ -11,6 +15,8 @@ Isto é mais do que apenas uma coleção de certificados—é um registro ativo 
 - 🎓 **Cursos** e trilhas de aprendizado que completei
 - 🚀 **Projetos** onde aplico conhecimento teórico
 - 📈 **Acompanhamento do progresso** do desenvolvimento das minhas habilidades
+
+<br>
 
 ## 📁 Estrutura do Repositório
 
@@ -23,15 +29,12 @@ Organizada por domínios tecnológicos:
 - `05_Programming/` - Habilidades de desenvolvimento e frameworks
 - `06_Data-Science/` - Analytics, ML e engenharia de dados
 
-### 📚 Certificados Legados
-- `Certificates/` - Organização original de certificados (mantida para referência)
-
 ### 🛠️ Recursos
 - `Resources/Templates/` - Templates de documentação padronizados
 - `Resources/Scripts/` - Scripts de automação e utilitários
 - `Resources/Assets/` - Imagens, badges e elementos visuais
 
----
+<br>
 
 ## 📚 Estudando Atualmente
 
@@ -43,18 +46,20 @@ Organizada por domínios tecnológicos:
 
 > 💡 **Quer sugerir um curso?** Sinta-se à vontade para abrir uma issue com recomendações!
 
----
+<br>
 
-## 🏆 Estatísticas Rápidas
+### 🏆 Estatísticas Rápidas
 
 <!-- Auto-generated badges -->
 [![Certifications](https://img.shields.io/badge/Certifications-0-success?style=flat-square&logo=certificate)](./Learning-Journey)
 [![Courses](https://img.shields.io/badge/Courses-3-blue?style=flat-square&logo=book)](./Learning-Journey)
 [![Projects](https://img.shields.io/badge/Projects-0-orange?style=flat-square&logo=code)](./Learning-Journey)
 [![Learning Areas](https://img.shields.io/badge/Learning%20Areas-6-purple?style=flat-square&logo=target)](./Learning-Journey)
-[![Last Updated](https://img.shields.io/badge/Last%20Updated-July                 %202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)
+[![Last Updated](https://img.shields.io/badge/Last%20Updated-July%202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)
 
-## 📊 Visão Geral das Áreas - Badges SVG Customizadas
+<br>
+
+## 📊 Visão Geral das Áreas
 
 ### 🔧 DevOps
 ![DevOps Progress](https://img.shields.io/badge/DevOps-1%20Atividade-FF7E5F?style=for-the-badge&logo=git&logoColor=white&labelColor=FF4500)
@@ -92,9 +97,9 @@ Organizada por domínios tecnológicos:
 ![Analytics](https://img.shields.io/badge/Analytics-Planejado-6c757d?style=flat-square&logo=tableau&logoColor=white)
 ![Visualization](https://img.shields.io/badge/Data%20Viz-Planejado-6c757d?style=flat-square&logo=plotly&logoColor=white)
 
----
+<br>
 
-## 🎯 Status Atual com Badges de Progresso
+## 🎯 Status Atual
 
 ### Cursos Concluídos
 ![GitHub Certification](https://img.shields.io/badge/GitHub%20Certification-✅%20Concluído-28a745?style=for-the-badge&logo=github&logoColor=white)
@@ -105,6 +110,8 @@ Organizada por domínios tecnológicos:
 ![GitHub Foundations Exam](https://img.shields.io/badge/GitHub%20Foundations%20Exam-🎯%20Próximo-ffc107?style=for-the-badge&logo=github&logoColor=white)
 ![AWS Fundamentals](https://img.shields.io/badge/AWS%20Fundamentals-📋%20Planejado-6c757d?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Docker Basics](https://img.shields.io/badge/Docker%20Basics-📋%20Planejado-6c757d?style=for-the-badge&logo=docker&logoColor=white)
+
+<br>
 
 ## 📈 Estatísticas Detalhadas
 

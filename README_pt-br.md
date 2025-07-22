@@ -16,7 +16,7 @@ Isto é mais do que apenas uma coleção de certificados—é um registro ativo 
 
 ### 🎓 Jornada de Aprendizado
 Organizada por domínios tecnológicos:
-- `01_DevOps/` - CI/CD, Infrastructure as Code, Containerização
+- `01_DevOps/` - CI/CD, Infrastructure as Code, Containerização, Git/GitHub
 - `02_Cloud-Computing/` - Certificações e projetos AWS, Azure, GCP
 - `03_Security/` - Cybersegurança, compliance e melhores práticas
 - `04_Linux-Infrastructure/` - Administração de sistemas e infraestrutura
@@ -49,23 +49,103 @@ Organizada por domínios tecnológicos:
 
 <!-- Auto-generated badges -->
 [![Certifications](https://img.shields.io/badge/Certifications-0-success?style=flat-square&logo=certificate)](./Learning-Journey)
-[![Courses](https://img.shields.io/badge/Courses-2-blue?style=flat-square&logo=book)](./Learning-Journey)
+[![Courses](https://img.shields.io/badge/Courses-3-blue?style=flat-square&logo=book)](./Learning-Journey)
 [![Projects](https://img.shields.io/badge/Projects-0-orange?style=flat-square&logo=code)](./Learning-Journey)
 [![Learning Areas](https://img.shields.io/badge/Learning%20Areas-6-purple?style=flat-square&logo=target)](./Learning-Journey)
-[![Last Updated](https://img.shields.io/badge/Last%20Updated-July%202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)
+[![Last Updated](https://img.shields.io/badge/Last%20Updated-July                 %202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)
 
-### 📊 Visão Geral das Áreas de Aprendizado
+## 📊 Visão Geral das Áreas - Badges SVG Customizadas
 
-| 🎯 Área | 📚 Atividades | 🛠️ Especializações |
-|---------|---------------|-------------------|
-| 🔧 **DevOps** | 0 | CI/CD • IaC • Containers |
-| ☁️ **Cloud Computing** | 0 | AWS • Azure • GCP |
-| 🛡️ **Segurança** | 0 | CompTIA • CISSP • DevSecOps |
-| 🐧 **Infraestrutura Linux** | **2** | RHCE • LPIC • Ubuntu |
-| 💻 **Programação** | 0 | Python • JavaScript • Go |
-| 📊 **Ciência de Dados** | 0 | ML • Analytics • Visualization |
+### 🔧 DevOps
+![DevOps Progress](https://img.shields.io/badge/DevOps-1%20Atividade-FF7E5F?style=for-the-badge&logo=git&logoColor=white&labelColor=FF4500)
+![Git](https://img.shields.io/badge/Git%2FGitHub-Concluído-28a745?style=flat-square&logo=git&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-Em%20Desenvolvimento-ffc107?style=flat-square&logo=githubactions&logoColor=white)
+![IaC](https://img.shields.io/badge/Infrastructure%20as%20Code-Planejado-6c757d?style=flat-square&logo=terraform&logoColor=white)
 
-> 🎯 **Área de Foco**: Atualmente desenvolvendo expertise em **Infraestrutura Linux** com 2 cursos concluídos
+### ☁️ Cloud Computing  
+![Cloud Progress](https://img.shields.io/badge/Cloud%20Computing-0%20Atividades-667EEA?style=for-the-badge&logo=amazonwebservices&logoColor=white&labelColor=4B0082)
+![AWS](https://img.shields.io/badge/AWS-Planejado-6c757d?style=flat-square&logo=amazonaws&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-Planejado-6c757d?style=flat-square&logo=microsoftazure&logoColor=white)
+![GCP](https://img.shields.io/badge/GCP-Planejado-6c757d?style=flat-square&logo=googlecloud&logoColor=white)
+
+### 🔒 Security
+![Security Progress](https://img.shields.io/badge/Security-0%20Atividades-F093FB?style=for-the-badge&logo=security&logoColor=white&labelColor=8B008B)
+![CompTIA](https://img.shields.io/badge/CompTIA-Planejado-6c757d?style=flat-square&logo=comptia&logoColor=white)
+![CISSP](https://img.shields.io/badge/CISSP-Planejado-6c757d?style=flat-square&logo=isc2&logoColor=white)
+![DevSecOps](https://img.shields.io/badge/DevSecOps-Planejado-6c757d?style=flat-square&logo=security&logoColor=white)
+
+### 🐧 Linux Infrastructure
+![Linux Progress](https://img.shields.io/badge/Linux%20Infrastructure-2%20Atividades-4FACFE?style=for-the-badge&logo=linux&logoColor=white&labelColor=1E90FF)
+![DIO Linux](https://img.shields.io/badge/DIO%20Linux%20Fundamentals-Concluído-28a745?style=flat-square&logo=linux&logoColor=white)
+![Cisco PacketTracer](https://img.shields.io/badge/Cisco%20Packet%20Tracer-Concluído-28a745?style=flat-square&logo=cisco&logoColor=white)
+![RHCE](https://img.shields.io/badge/RHCE-Planejado-6c757d?style=flat-square&logo=redhat&logoColor=white)
+
+### 💻 Programming
+![Programming Progress](https://img.shields.io/badge/Programming-0%20Atividades-43E97B?style=for-the-badge&logo=code&logoColor=white&labelColor=32CD32)
+![Python](https://img.shields.io/badge/Python-Planejado-6c757d?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-Planejado-6c757d?style=flat-square&logo=javascript&logoColor=white)
+![Go](https://img.shields.io/badge/Go-Planejado-6c757d?style=flat-square&logo=go&logoColor=white)
+
+### 📊 Data Science
+![Data Science Progress](https://img.shields.io/badge/Data%20Science-0%20Atividades-FA709A?style=for-the-badge&logo=python&logoColor=white&labelColor=FF1493)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Planejado-6c757d?style=flat-square&logo=tensorflow&logoColor=white)
+![Analytics](https://img.shields.io/badge/Analytics-Planejado-6c757d?style=flat-square&logo=tableau&logoColor=white)
+![Visualization](https://img.shields.io/badge/Data%20Viz-Planejado-6c757d?style=flat-square&logo=plotly&logoColor=white)
 
 ---
+
+## 🎯 Status Atual com Badges de Progresso
+
+### Cursos Concluídos
+![GitHub Certification](https://img.shields.io/badge/GitHub%20Certification-✅%20Concluído-28a745?style=for-the-badge&logo=github&logoColor=white)
+![Linux Fundamentals](https://img.shields.io/badge/Linux%20Fundamentals-✅%20Concluído-28a745?style=for-the-badge&logo=linux&logoColor=white)  
+![Packet Tracer](https://img.shields.io/badge/Cisco%20Packet%20Tracer-✅%20Concluído-28a745?style=for-the-badge&logo=cisco&logoColor=white)
+
+### Próximas Metas
+![GitHub Foundations Exam](https://img.shields.io/badge/GitHub%20Foundations%20Exam-🎯%20Próximo-ffc107?style=for-the-badge&logo=github&logoColor=white)
+![AWS Fundamentals](https://img.shields.io/badge/AWS%20Fundamentals-📋%20Planejado-6c757d?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Docker Basics](https://img.shields.io/badge/Docker%20Basics-📋%20Planejado-6c757d?style=for-the-badge&logo=docker&logoColor=white)
+
+## 📈 Estatísticas Detalhadas
+
+| Categoria | Total | Concluídos | Em Progresso | Planejados |
+|-----------|-------|------------|--------------|------------|
+| 📜 **Certificações** | ![](https://img.shields.io/badge/-0-red?style=flat-square) | ![](https://img.shields.io/badge/-0-lightgrey?style=flat-square) | ![](https://img.shields.io/badge/-0-yellow?style=flat-square) | ![](https://img.shields.io/badge/-1-blue?style=flat-square) |
+| 🎓 **Cursos** | ![](https://img.shields.io/badge/-3-success?style=flat-square) | ![](https://img.shields.io/badge/-3-green?style=flat-square) | ![](https://img.shields.io/badge/-0-yellow?style=flat-square) | ![](https://img.shields.io/badge/-3-blue?style=flat-square) |
+| 🚀 **Projetos** | ![](https://img.shields.io/badge/-0-red?style=flat-square) | ![](https://img.shields.io/badge/-0-lightgrey?style=flat-square) | ![](https://img.shields.io/badge/-0-yellow?style=flat-square) | ![](https://img.shields.io/badge/-1-blue?style=flat-square) |
+
+### 📊 Distribuição por Área
+
+<table>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/🔧%20DevOps-1%20Atividade-FF7E5F?style=for-the-badge" alt="DevOps"/>
+<br><sub><b>Git/GitHub, CI/CD, IaC</b></sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/☁️%20Cloud-0%20Atividades-667EEA?style=for-the-badge" alt="Cloud"/>
+<br><sub><b>AWS, Azure, GCP</b></sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/🔒%20Security-0%20Atividades-F093FB?style=for-the-badge" alt="Security"/>
+<br><sub><b>CompTIA, CISSP, DevSecOps</b></sub>
+</td>
+</tr>
+<tr>
+<td align="center">
+<img src="https://img.shields.io/badge/🐧%20Linux-2%20Atividades-4FACFE?style=for-the-badge" alt="Linux"/>
+<br><sub><b>System Admin, Networks</b></sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/💻%20Programming-0%20Atividades-43E97B?style=for-the-badge" alt="Programming"/>
+<br><sub><b>Python, JavaScript, Go</b></sub>
+</td>
+<td align="center">
+<img src="https://img.shields.io/badge/📊%20Data%20Science-0%20Atividades-FA709A?style=for-the-badge" alt="Data Science"/>
+<br><sub><b>ML, Analytics, Visualization</b></sub>
+</td>
+</tr>
+</table>
+
+> 🎯 **Foco Atual:** Consolidando conhecimentos em **Git/GitHub** e **Linux Infrastructure** antes de expandir para outras áreas
 

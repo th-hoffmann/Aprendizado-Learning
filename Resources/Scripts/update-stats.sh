@@ -46,6 +46,15 @@ get_activity_type() {
     esac
 }
 
+# Função para atualizar um badge de contagem de forma robusta
+update_badge_count() {
+    local file="$1"
+    local prefix="$2"
+    local count="$3"
+    # Regex que encontra o prefixo, um hífen, e um ou mais dígitos. Substitui apenas os dígitos.
+    sed -i -E "s/(${prefix}-)[0-9]+/\1${count}/g" "$file"
+}
+
 # Percorrer todas as áreas de aprendizado
 for area_dir in "$LEARNING_DIR"/*; do
     if [ -d "$area_dir" ]; then
@@ -69,112 +78,26 @@ for area_dir in "$LEARNING_DIR"/*; do
         total_activities=$(find "$area_dir" -name "*.md" -not -name "README*" | wc -l)
         
         echo "Área $area_name: $total_activities atividades"
-        
-        # Atualizar badges por área no README inglês
-        case "$area_name" in
-            "DevOps")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/DevOps-[0-9]*%20Activity/DevOps-${total_activities}%20Activity/" "$README_FILE"
-                else
-                    sed -i "s/DevOps-[0-9]*%20Activities\?/DevOps-${total_activities}%20Activities/" "$README_FILE"
-                fi
-                ;;
-            "Cloud Computing")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Cloud%20Computing-[0-9]*%20Activity/Cloud%20Computing-${total_activities}%20Activity/" "$README_FILE"
-                else
-                    sed -i "s/Cloud%20Computing-[0-9]*%20Activities\?/Cloud%20Computing-${total_activities}%20Activities/" "$README_FILE"
-                fi
-                ;;
-            "Security")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Security-[0-9]*%20Activity/Security-${total_activities}%20Activity/" "$README_FILE"
-                else
-                    sed -i "s/Security-[0-9]*%20Activities\?/Security-${total_activities}%20Activities/" "$README_FILE"
-                fi
-                ;;
-            "Linux Infrastructure")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Activity/Linux%20Infrastructure-${total_activities}%20Activity/" "$README_FILE"
-                else
-                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Activities\?/Linux%20Infrastructure-${total_activities}%20Activities/" "$README_FILE"
-                fi
-                ;;
-            "Programming")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Programming-[0-9]*%20Activity/Programming-${total_activities}%20Activity/" "$README_FILE"
-                else
-                    sed -i "s/Programming-[0-9]*%20Activities\?/Programming-${total_activities}%20Activities/" "$README_FILE"
-                fi
-                ;;
-            "Data Science")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Data%20Science-[0-9]*%20Activity/Data%20Science-${total_activities}%20Activity/" "$README_FILE"
-                else
-                    sed -i "s/Data%20Science-[0-9]*%20Activities\?/Data%20Science-${total_activities}%20Activities/" "$README_FILE"
-                fi
-                ;;
-        esac
-        
-        # Atualizar badges por área no README português
-        case "$area_name" in
-            "DevOps")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/DevOps-[0-9]*%20Atividade/DevOps-${total_activities}%20Atividade/" "$README_PT_FILE"
-                else
-                    sed -i "s/DevOps-[0-9]*%20Atividades\?/DevOps-${total_activities}%20Atividades/" "$README_PT_FILE"
-                fi
-                ;;
-            "Cloud Computing")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Cloud%20Computing-[0-9]*%20Atividade/Cloud%20Computing-${total_activities}%20Atividade/" "$README_PT_FILE"
-                else
-                    sed -i "s/Cloud%20Computing-[0-9]*%20Atividades\?/Cloud%20Computing-${total_activities}%20Atividades/" "$README_PT_FILE"
-                fi
-                ;;
-            "Security")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Security-[0-9]*%20Atividade/Security-${total_activities}%20Atividade/" "$README_PT_FILE"
-                else
-                    sed -i "s/Security-[0-9]*%20Atividades\?/Security-${total_activities}%20Atividades/" "$README_PT_FILE"
-                fi
-                ;;
-            "Linux Infrastructure")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Atividade/Linux%20Infrastructure-${total_activities}%20Atividade/" "$README_PT_FILE"
-                else
-                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Atividades\?/Linux%20Infrastructure-${total_activities}%20Atividades/" "$README_PT_FILE"
-                fi
-                ;;
-            "Programming")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Programming-[0-9]*%20Atividade/Programming-${total_activities}%20Atividade/" "$README_PT_FILE"
-                else
-                    sed -i "s/Programming-[0-9]*%20Atividades\?/Programming-${total_activities}%20Atividades/" "$README_PT_FILE"
-                fi
-                ;;
-            "Data Science")
-                if [ "$total_activities" -eq 1 ]; then
-                    sed -i "s/Data%20Science-[0-9]*%20Atividade/Data%20Science-${total_activities}%20Atividade/" "$README_PT_FILE"
-                else
-                    sed -i "s/Data%20Science-[0-9]*%20Atividades\?/Data%20Science-${total_activities}%20Atividades/" "$README_PT_FILE"
-                fi
-                ;;
-        esac
+
+        # Atualizar badges de área em ambos os READMEs de forma robusta
+        area_badge_prefix=$(echo "$area_name" | tr ' ' '%')
+        # Regex que lida com singular/plural e ambos os idiomas (Activity/Atividade)
+        sed -i -E "s/(${area_badge_prefix}-)[0-9]+(%20(Activity|Atividade)s?)/\1${total_activities}\2/g" "$README_FILE"
+        sed -i -E "s/(${area_badge_prefix}-)[0-9]+(%20(Activity|Atividade)s?)/\1${total_activities}\2/g" "$README_PT_FILE"
     fi
 done
 
 # Atualizar badges principais (README inglês)
-sed -i "s/Certifications-[0-9]*/Certifications-$cert_count/" "$README_FILE"
-sed -i "s/Courses-[0-9]*/Courses-$course_count/" "$README_FILE"
-sed -i "s/Projects-[0-9]*/Projects-$project_count/" "$README_FILE"
-sed -i "s/Learning%20Areas-[0-9]*/Learning%20Areas-$area_count/" "$README_FILE"
+update_badge_count "$README_FILE" "Certifications" "$cert_count"
+update_badge_count "$README_FILE" "Courses" "$course_count"
+update_badge_count "$README_FILE" "Projects" "$project_count"
+update_badge_count "$README_FILE" "Learning%20Areas" "$area_count"
 
 # Atualizar badges principais (README português)
-sed -i "s/Certifications-[0-9]*/Certifications-$cert_count/" "$README_PT_FILE"
-sed -i "s/Courses-[0-9]*/Courses-$course_count/" "$README_PT_FILE"
-sed -i "s/Projects-[0-9]*/Projects-$project_count/" "$README_PT_FILE"
-sed -i "s/Learning%20Areas-[0-9]*/Learning%20Areas-$area_count/" "$README_PT_FILE"
+update_badge_count "$README_PT_FILE" "Certifications" "$cert_count"
+update_badge_count "$README_PT_FILE" "Courses" "$course_count"
+update_badge_count "$README_PT_FILE" "Projects" "$project_count"
+update_badge_count "$README_PT_FILE" "Learning%20Areas" "$area_count"
 
 echo "Estatísticas atualizadas:"
 echo "- Certificações: $cert_count"

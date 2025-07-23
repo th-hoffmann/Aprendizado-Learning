@@ -93,37 +93,31 @@ check_file() {
 # Validate directory structure
 validate_structure() {
     print_section "VALIDATING DIRECTORY STRUCTURE"
+    local repo_root
+    repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
     
     # Check main directories
-    check_directory "Certificates" "Main Certificates directory exists"
-    check_directory "Resources" "Resources directory exists"
-    check_directory "Resources/Scripts" "Scripts directory exists"
-    check_directory "Resources/Templates" "Templates directory exists"
+    check_directory "$repo_root/Learning-Journey" "Main Learning-Journey directory exists"
+    check_directory "$repo_root/Resources" "Resources directory exists"
+    check_directory "$repo_root/Resources/Scripts" "Scripts directory exists"
+    check_directory "$repo_root/Resources/Templates" "Templates directory exists"
     
-    # Check Certificates subdirectories
-    local cert_dirs=("01_Certifications" "02_Training" "03_Bootcamps" "04_Courses" "05_Immersions" "06_Workshops")
-    for dir in "${cert_dirs[@]}"; do
-        check_directory "Certificates/$dir" "Directory Certificates/$dir exists"
+    # Check Learning-Journey subdirectories
+    local area_dirs=("01_DevOps" "02_Cloud-Computing" "03_Security" "04_Linux-Infrastructure" "05_Programming" "06_Data-Science")
+    for area in "${area_dirs[@]}"; do
+        check_directory "$repo_root/Learning-Journey/$area" "Directory Learning-Journey/$area exists"
     done
     
     # Check for README files
-    check_file "README.md" "Root README.md exists"
-    check_file "README_pt-br.md" "Root README_pt-br.md exists"
-    check_file "Certificates/README.md" "Certificates README.md exists"
-    check_file "Certificates/README_pt-br.md" "Certificates README_pt-br.md exists"
-    
-    # Check each subdirectory for README files
-    for dir in "${cert_dirs[@]}"; do
-        check_file "Certificates/$dir/README.md" "$dir README.md exists"
-        check_file "Certificates/$dir/README_pt-br.md" "$dir README_pt-br.md exists"
-    done
+    check_file "$repo_root/README.md" "Root README.md exists"
+    check_file "$repo_root/README_pt-br.md" "Root README_pt-br.md exists"
 }
 
 # Validate script files
 validate_scripts() {
     print_section "VALIDATING SCRIPT FILES"
     
-    local scripts=("portfolio-manager.sh" "enhanced-badge-generator.sh" "update-stats.sh" "update-current-courses.sh" "update-badges.sh")
+    local scripts=("portfolio-manager.sh" "enhanced-badge-generator.sh" "update-stats.sh" "update-current-courses.sh")
     
     for script in "${scripts[@]}"; do
         local script_path="Resources/Scripts/$script"
@@ -234,21 +228,16 @@ validate_badge_system() {
 validate_file_patterns() {
     print_section "VALIDATING FILE PATTERNS"
     
-    # Check for common file patterns
+    # Check for portfolio entry files
     local markdown_count
-    markdown_count=$(find Certificates -name "*.md" -type f | wc -l)
-    validate_check "Portfolio contains markdown files (>6)" "$([ "$markdown_count" -gt 6 ] && echo true || echo false)" "WARN"
+    markdown_count=$(find Learning-Journey -name "*.md" -not -name "README*.md" -type f | wc -l)
+    validate_check "Portfolio contains markdown entry files" "$([ "$markdown_count" -gt 0 ] && echo true || echo false)" "WARN"
     
-    # Check for consistent naming in directories
-    for dir in Certificates/*/; do
-        if [ -d "$dir" ]; then
-            local dir_name
-            local readme_count
-            dir_name=$(basename "$dir")
-            readme_count=$(find "$dir" -maxdepth 1 -name "README*.md" -type f | wc -l)
-            validate_check "Directory $dir_name has README files" "$([ "$readme_count" -ge 1 ] && echo true || echo false)" "WARN"
-        fi
-    done
+    # Check for consistent naming in entry files (YYYY-MM-DD_provider_name.md)
+    local malformed_files
+    # Finds files that do NOT match the expected naming convention
+    malformed_files=$(find Learning-Journey -name "*.md" -not -name "README*.md" -type f -not -regex '.*/[0-9]{2}/[0-9]{2}/[0-9]{4}_.*\.md' | wc -l)
+    validate_check "All entry files follow the DD-MM-YYYY_... naming convention" "$([ "$malformed_files" -eq 0 ] && echo true || echo false)" "WARN"
 }
 
 # Generate final report

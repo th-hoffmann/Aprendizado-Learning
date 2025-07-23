@@ -8,19 +8,33 @@ generate_platform_badges() {
     local provider="$1"
     local course_name="$2"
     local area="$3"
+    local technologies="$4"
+    local status="$5"
     
     # Converter para lowercase para comparação
     local provider_lower
     local course_lower
+    local status_lower
     provider_lower=$(echo "$provider" | tr '[:upper:]' '[:lower:]')
     course_lower=$(echo "$course_name" | tr '[:upper:]' '[:lower:]')
+    status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
     
     # Array para armazenar badges
     local badges=()
     
+    # Badge de Status Genérico
+    if [[ "$status_lower" == *"concluído"* ]] || [[ "$status_lower" == *"completed"* ]]; then
+        badges+=("![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)")
+    elif [[ "$status_lower" == *"em andamento"* ]] || [[ "$status_lower" == *"in progress"* ]] || [[ "$status_lower" == *"ongoing"* ]]; then
+        badges+=("![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square&logo=spinner)")
+    fi
+
     # Badges baseados na plataforma
     case "$provider_lower" in
         *alura*)
+            if [[ "$course_lower" == *"imersão"* ]] || [[ "$course_lower" == *"immersion"* ]]; then
+                badges+=("![Immersion](https://img.shields.io/badge/Type-Immersion-orange?style=flat-square&logo=diving)")
+            fi
             badges+=("![Alura](https://img.shields.io/badge/Platform-Alura-1976D2?style=flat-square)")
             badges+=("![Tech_Focus](https://img.shields.io/badge/Focus-Technology-blue?style=flat-square&logo=code)")
             badges+=("![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)")
@@ -47,7 +61,6 @@ generate_platform_badges() {
             badges+=("![DIO](https://img.shields.io/badge/Platform-DIO-E6006F?style=flat-square)")
             badges+=("![Bootcamp](https://img.shields.io/badge/Type-Bootcamp-purple?style=flat-square&logo=rocket)")
             badges+=("![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)")
-            badges+=("![Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)")
             ;;
         *edx*)
             badges+=("![edX](https://img.shields.io/badge/Platform-edX-02262B?style=flat-square&logo=edx)")
@@ -108,19 +121,11 @@ generate_platform_badges() {
     
     # Adicionar badges avançados de tecnologia
     local tech_badges
-    tech_badges=$(detect_advanced_technologies "$course_name $provider")
+    tech_badges=$(detect_advanced_technologies "$course_name $provider $technologies")
     if [ -n "$tech_badges" ]; then
         while IFS= read -r badge; do
             badges+=("$badge")
         done <<< "$tech_badges"
-    fi
-    
-    if [[ "$course_lower" == *"linux"* ]]; then
-        badges+=("![Linux](https://img.shields.io/badge/OS-Linux-FCC624?style=flat-square&logo=linux)")
-    fi
-    
-    if [[ "$course_lower" == *"security"* ]] || [[ "$course_lower" == *"cyber"* ]]; then
-        badges+=("![Security](https://img.shields.io/badge/Focus-Security-red?style=flat-square&logo=shield)")
     fi
     
     # Badges baseados na área
@@ -154,6 +159,7 @@ generate_certification_badges() {
     local cert_name="$1"
     local provider="$2"
     local area="$3"
+    local technologies="$4"
     
     local provider_lower
     local cert_lower
@@ -201,9 +207,6 @@ generate_certification_badges() {
         *google*cloud*|*gcp*)
             badges+=("![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=flat-square&logo=google-cloud&logoColor=white)")
             ;;
-        *imersão*|*immersion*)
-            badges+=("![Immersion](https://img.shields.io/badge/Type-Immersion-orange?style=flat-square&logo=diving)")
-            ;;
         *microsoft*|*azure*)
             badges+=("![Microsoft](https://img.shields.io/badge/Provider-Microsoft-5E5E5E?style=flat-square&logo=microsoft)")
             badges+=("![Azure](https://img.shields.io/badge/Platform-Azure-0078D4?style=flat-square&logo=microsoft-azure)")
@@ -236,13 +239,32 @@ generate_certification_badges() {
     
     # Adicionar badges avançados de tecnologia
     local tech_badges
-    tech_badges=$(detect_advanced_technologies "$cert_name $provider")
+    tech_badges=$(detect_advanced_technologies "$cert_name $provider $technologies")
     if [ -n "$tech_badges" ]; then
         while IFS= read -r badge; do
             badges+=("$badge")
         done <<< "$tech_badges"
     fi
     
+    # Badges baseados na área
+    case "$area" in
+        "01_DevOps")
+            badges+=("![DevOps](https://img.shields.io/badge/Area-DevOps-FF6B6B?style=flat-square&logo=devopsag)")
+            ;;
+        "02_Cloud-Computing")
+            badges+=("![Cloud](https://img.shields.io/badge/Area-Cloud_Computing-4ECDC4?style=flat-square&logo=cloud)")
+            ;;
+        "03_Security")
+            badges+=("![Security](https://img.shields.io/badge/Area-Security-E74C3C?style=flat-square&logo=shield)")
+            ;;
+        "04_Linux-Infrastructure")
+            badges+=("![Infrastructure](https://img.shields.io/badge/Area-Infrastructure-2ECC71?style=flat-square&logo=server)")
+            ;;
+        "05_Programming")
+            badges+=("![Programming](https://img.shields.io/badge/Area-Programming-9B59B6?style=flat-square&logo=code)")
+            ;;
+    esac
+
     # Adicionar data será feita no script principal
     badges+=("![Date](https://img.shields.io/badge/Date-[DD%2FMM%2FAAAA]-lightgrey?style=flat-square&logo=calendar)")
     
@@ -255,10 +277,12 @@ enhance_course_template() {
     local provider="$2"
     local course_name="$3"
     local area="$4"
+    local technologies="$5"
+    local status="$6"
     
     # Gerar badges personalizados
     local badges
-    badges=$(generate_platform_badges "$provider" "$course_name" "$area")
+    badges=$(generate_platform_badges "$provider" "$course_name" "$area" "$technologies" "$status")
     
     # Adicionar badges no início do arquivo (após o título)
     local temp_file
@@ -288,10 +312,11 @@ enhance_certification_template() {
     local cert_name="$3"
     local area="$4"
     local cert_date="$5"
+    local technologies="$6"
     
     # Gerar badges personalizados
     local badges
-    badges=$(generate_certification_badges "$cert_name" "$provider" "$area")
+    badges=$(generate_certification_badges "$cert_name" "$provider" "$area" "$technologies")
     
     # Substituir placeholder de data
     badges=${badges//\[DD%2FMM%2FAAAA\]/${cert_date//\//%2F}}
@@ -315,6 +340,87 @@ enhance_certification_template() {
     
     # Substituir arquivo original
     mv "$temp_file" "$cert_file"
+}
+
+# Função para gerar badges para projetos
+generate_project_badges() {
+    local project_name="$1"
+    local status="$2"
+    local level="$3"
+    local area="$4"
+    local technologies="$5"
+
+    local status_lower
+    local level_lower
+    status_lower=$(echo "$status" | tr '[:upper:]' '[:lower:]')
+    level_lower=$(echo "$level" | tr '[:upper:]' '[:lower:]')
+
+    local badges=()
+
+    # Badge de Status
+    if [[ "$status_lower" == *"concluído"* ]] || [[ "$status_lower" == *"completed"* ]]; then
+        badges+=("![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)")
+    elif [[ "$status_lower" == *"em andamento"* ]] || [[ "$status_lower" == *"in progress"* ]]; then
+        badges+=("![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square&logo=spinner)")
+    elif [[ "$status_lower" == *"planejado"* ]] || [[ "$status_lower" == *"planned"* ]]; then
+        badges+=("![Status](https://img.shields.io/badge/Status-Planned-lightgrey?style=flat-square&logo=calendar)")
+    fi
+
+    # Badge de Nível
+    if [[ "$level_lower" == *"iniciante"* ]] || [[ "$level_lower" == *"beginner"* ]]; then
+        badges+=("![Level](https://img.shields.io/badge/Level-Beginner-green?style=flat-square&logo=seedling)")
+    elif [[ "$level_lower" == *"intermediário"* ]] || [[ "$level_lower" == *"intermediate"* ]]; then
+        badges+=("![Level](https://img.shields.io/badge/Level-Intermediate-blue?style=flat-square&logo=chart-line)")
+    elif [[ "$level_lower" == *"avançado"* ]] || [[ "$level_lower" == *"advanced"* ]]; then
+        badges+=("![Level](https://img.shields.io/badge/Level-Advanced-purple?style=flat-square&logo=rocket)")
+    fi
+
+    # Badges de Tecnologia
+    local tech_badges
+    tech_badges=$(detect_advanced_technologies "$project_name $technologies")
+    if [ -n "$tech_badges" ]; then
+        while IFS= read -r badge; do
+            badges+=("$badge")
+        done <<< "$tech_badges"
+    fi
+
+    # Badge de Área
+    case "$area" in
+        "01_DevOps") badges+=("![DevOps](https://img.shields.io/badge/Area-DevOps-FF6B6B?style=flat-square&logo=devopsag)") ;;
+        "02_Cloud-Computing") badges+=("![Cloud](https://img.shields.io/badge/Area-Cloud_Computing-4ECDC4?style=flat-square&logo=cloud)") ;;
+        "03_Security") badges+=("![Security](https://img.shields.io/badge/Area-Security-E74C3C?style=flat-square&logo=shield)") ;;
+        "04_Linux-Infrastructure") badges+=("![Infrastructure](https://img.shields.io/badge/Area-Infrastructure-2ECC71?style=flat-square&logo=server)") ;;
+        "05_Programming") badges+=("![Programming](https://img.shields.io/badge/Area-Programming-9B59B6?style=flat-square&logo=code)") ;;
+        "06_Data-Science") badges+=("![Data Science](https://img.shields.io/badge/Area-Data_Science-F39C12?style=flat-square&logo=databricks)") ;;
+    esac
+
+    printf '%s\n' "${badges[@]}"
+}
+
+# Função para integrar com o portfolio manager para projetos
+enhance_project_template() {
+    local project_file="$1"
+    local project_name="$2"
+    local status="$3"
+    local level="$4"
+    local area="$5"
+    local technologies="$6"
+
+    local badges
+    badges=$(generate_project_badges "$project_name" "$status" "$level" "$area" "$technologies")
+
+    local temp_file
+    temp_file=$(mktemp)
+
+    {
+        head -n 1 "$project_file"
+        echo
+        echo "$badges"
+        echo
+        tail -n +2 "$project_file"
+    } > "$temp_file"
+
+    mv "$temp_file" "$project_file"
 }
 
 # Função avançada para detectar tecnologias e frameworks

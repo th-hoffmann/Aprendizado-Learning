@@ -18,41 +18,37 @@ extract_course_info() {
     if [ -f "$file" ]; then
         local course_name
         local platform
+        local status
         course_name=$(grep "^# " "$file" | head -1 | sed 's/^# //')
-        platform=$(basename "$file" | cut -d'_' -f2)
-        local progress="Em andamento"
+        platform=$(grep -m 1 -i "Instituição:" "$file" | cut -d':' -f2 | xargs)
+        status=$(grep -m 1 -i "Status:" "$file" | cut -d':' -f2 | xargs)
         
-        # Tentar extrair progresso do arquivo
-        if grep -q "Progress:" "$file" || grep -q "Progresso:" "$file"; then
-            progress=$(grep -E "(Progress|Progresso):" "$file" | head -1 | cut -d':' -f2 | xargs)
+        # Fallback para compatibilidade com arquivos antigos
+        if [ -z "$platform" ]; then
+            platform=$(basename "$file" | cut -d'_' -f2)
+        fi
+        if [ -z "$status" ]; then
+            status="Em andamento"
         fi
         
-        echo "$course_name|$platform|$progress|$area|TBD"
+        echo "$course_name|$platform|$status|$area|TBD"
     fi
 }
 
-# Procurar por cursos em andamento (arquivos recentes ou com status "em andamento")
+# Procurar por cursos com status "em andamento"
 current_courses=()
 
 for area_dir in "$LEARNING_DIR"/*; do
     if [ -d "$area_dir" ]; then
         area_name=$(basename "$area_dir" | sed 's/^[0-9][0-9]_//' | tr '-' ' ')
         
-        # Procurar em todas as subcategorias
         for subdir in Courses Bootcamps Workshops; do
             if [ -d "$area_dir/$subdir" ]; then
-                # Arquivos dos últimos 6 meses ou com status "em andamento"
+                # A fonte da verdade é o status dentro do arquivo.
                 while IFS= read -r file; do
-                    if [ -n "$file" ]; then
-                        # Verificar se arquivo é recente (últimos 180 dias) ou contém "em andamento"
-                        if [ "$(find "$file" -mtime -180)" ] || grep -qi "em andamento\|in progress\|ongoing" "$file" 2>/dev/null; then
-                            course_info=$(extract_course_info "$file" "$area_name")
-                            if [ -n "$course_info" ]; then
-                                current_courses+=("$course_info")
-                            fi
-                        fi
-                    fi
-                done <<< "$(find "$area_dir/$subdir" -name "*.md" -type f 2>/dev/null)"
+                    course_info=$(extract_course_info "$file" "$area_name")
+                    [ -n "$course_info" ] && current_courses+=("$course_info")
+                done <<< "$(grep -rli -E "status:.*(em andamento|in progress|ongoing)" "$area_dir/$subdir")"
             fi
         done
     fi
@@ -60,77 +56,68 @@ done
 
 # Gerar tabela para README em inglês
 generate_english_table() {
-    local temp_file="/tmp/current_courses_en.txt"
+    local temp_table
+    temp_table=$(mktemp)
+    local start_marker="<!-- CURRENT_COURSES_START -->"
+    local end_marker="<!-- CURRENT_COURSES_END -->"
     
-    echo "| Course | Platform | Progress | Area | Expected Completion |" > "$temp_file"
-    echo "|--------|----------|----------|------|-------------------|" >> "$temp_file"
+    echo "| Course | Platform | Progress | Area | Expected Completion |" > "$temp_table"
+    echo "|--------|----------|----------|------|-------------------|" >> "$temp_table"
     
     if [ ${#current_courses[@]} -eq 0 ]; then
-        echo "| *No courses currently active* | - | - | - | - |" >> "$temp_file"
+        echo "| *No courses currently active* | - | - | - | - |" >> "$temp_table"
     else
         for course in "${current_courses[@]}"; do
             IFS='|' read -r name platform progress area completion <<< "$course"
-            echo "| $name | $platform | $progress | $area | $completion |" >> "$temp_file"
+            echo "| $name | $platform | $progress | $area | $completion |" >> "$temp_table"
         done
     fi
     
-    # Substituir tabela no README
-    local start_line
-    local end_line
-    start_line=$(grep -n "| Course | Platform | Progress | Area |" "$README_FILE" | cut -d: -f1)
-    end_line=$(grep -n "> 💡" "$README_FILE" | cut -d: -f1)
-    
-    if [ -n "$start_line" ] && [ -n "$end_line" ]; then
-        # Criar arquivo temporário com a nova seção
-        {
-            head -n $((start_line - 1)) "$README_FILE"
-            cat "$temp_file"
-            echo ""
-            tail -n +"$end_line" "$README_FILE"
-        } > "/tmp/readme_temp.md"
-        
-        mv "/tmp/readme_temp.md" "$README_FILE"
+    # Substituir conteúdo entre os marcadores de forma segura
+    local temp_readme
+    temp_readme=$(mktemp)
+    awk -v s="$start_marker" -v e="$end_marker" -v r="$temp_table" \
+        'BEGIN{p=1} $0~s{print; print ""; system("cat "r); p=0} $0~e{p=1} p' "$README_FILE" > "$temp_readme"
+    if [ -s "$temp_readme" ]; then
+        mv "$temp_readme" "$README_FILE"
+    else
+        rm "$temp_readme"
     fi
-    
-    rm -f "$temp_file"
+    rm "$temp_table"
 }
 
 # Gerar tabela para README em português
 generate_portuguese_table() {
-    local temp_file="/tmp/current_courses_pt.txt"
+    local temp_table
+    temp_table=$(mktemp)
+    local start_marker="<!-- CURRENT_COURSES_START -->"
+    local end_marker="<!-- CURRENT_COURSES_END -->"
     
-    echo "| Curso | Plataforma | Progresso | Área | Conclusão Prevista |" > "$temp_file"
-    echo "|-------|------------|-----------|------|-------------------|" >> "$temp_file"
+    echo "| Curso | Plataforma | Progresso | Área | Conclusão Prevista |" > "$temp_table"
+    echo "|-------|------------|-----------|------|-------------------|" >> "$temp_table"
     
     if [ ${#current_courses[@]} -eq 0 ]; then
-        echo "| *Nenhum curso ativo no momento* | - | - | - | - |" >> "$temp_file"
+        echo "| *Nenhum curso ativo no momento* | - | - | - | - |" >> "$temp_table"
     else
         for course in "${current_courses[@]}"; do
             IFS='|' read -r name platform progress area completion <<< "$course"
-            echo "| $name | $platform | $progress | $area | $completion |" >> "$temp_file"
+            echo "| $name | $platform | $progress | $area | $completion |" >> "$temp_table"
         done
     fi
     
     # Substituir tabela no README português se existir
     if [ -f "$README_PT_FILE" ]; then
-        local start_line
-        local end_line
-        start_line=$(grep -n "| Curso | Plataforma | Progresso |" "$README_PT_FILE" | cut -d: -f1)
-        end_line=$(grep -n "> 💡" "$README_PT_FILE" | cut -d: -f1)
-        
-        if [ -n "$start_line" ] && [ -n "$end_line" ]; then
-            {
-                head -n $((start_line - 1)) "$README_PT_FILE"
-                cat "$temp_file"
-                echo ""
-                tail -n +"$end_line" "$README_PT_FILE"
-            } > "/tmp/readme_pt_temp.md"
-            
-            mv "/tmp/readme_pt_temp.md" "$README_PT_FILE"
+        local temp_readme
+        temp_readme=$(mktemp)
+        awk -v s="$start_marker" -v e="$end_marker" -v r="$temp_table" \
+            'BEGIN{p=1} $0~s{print; print ""; system("cat "r); p=0} $0~e{p=1} p' "$README_PT_FILE" > "$temp_readme"
+        if [ -s "$temp_readme" ]; then
+            mv "$temp_readme" "$README_PT_FILE"
+        else
+            rm "$temp_readme"
         fi
     fi
-    
-    rm -f "$temp_file"
+    rm "$temp_table"
 }
 
 # Executar atualizações

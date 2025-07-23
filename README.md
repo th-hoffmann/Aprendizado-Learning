@@ -40,12 +40,12 @@ Organized by technology domains:
 
 ### 🔄 Ongoing Courses
 
+<!-- CURRENT_COURSES_START -->
+
 | Course | Platform | Progress | Area | Expected Completion |
 |--------|----------|----------|------|-------------------|
-| Formação GitHub Certification - DIO | DIO | Em andamento | DevOps | TBD |
-| Imersão Cloud DevOps - Alura & Google Cloud | Alura | Em andamento | DevOps | TBD |
-| Formação Linux Fundamentals | DIO | ** 100% | Linux Infrastructure | TBD |
-| Getting Started: Cisco Packet Tracer | Cisco-NetAcad | ** 100% | Linux Infrastructure | TBD |
+| *No courses currently active* | - | - | - | - |
+<!-- CURRENT_COURSES_END -->
 
 > 💡 **Want to suggest a course?** Feel free to open an issue with recommendations!
 
@@ -65,7 +65,7 @@ Organized by technology domains:
 ## 📊 Learning Areas Overview
 
 ### � DevOps
-![DevOps Progress](https://img.shields.io/badge/DevOps-1%20Activity-FF7E5F?style=for-the-badge&logo=git&logoColor=white&labelColor=FF4500)
+![DevOps Progress](https://img.shields.io/badge/DevOps-2%20Activity-FF7E5F?style=for-the-badge&logo=git&logoColor=white&labelColor=FF4500)
 ![Git](https://img.shields.io/badge/Git%2FGitHub-Completed-28a745?style=flat-square&logo=git&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-In%20Development-ffc107?style=flat-square&logo=githubactions&logoColor=white)
 ![IaC](https://img.shields.io/badge/Infrastructure%20as%20Code-Planned-6c757d?style=flat-square&logo=terraform&logoColor=white)
@@ -129,7 +129,7 @@ Organized by technology domains:
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/🔧%20DevOps-1%20Activity-FF7E5F?style=for-the-badge" alt="DevOps"/>
+<img src="https://img.shields.io/badge/🔧%20DevOps-2%20Activity-FF7E5F?style=for-the-badge" alt="DevOps"/>
 <br><sub><b>Git/GitHub, CI/CD, IaC</b></sub>
 </td>
 <td align="center">
@@ -158,4 +158,3 @@ Organized by technology domains:
 </table>
 
 > 🎯 **Current Focus**: Consolidating knowledge in **Git/GitHub** and **Linux Infrastructure** before expanding to **Cloud Computing** and advanced **DevOps**
-

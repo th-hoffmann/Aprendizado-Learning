@@ -40,12 +40,12 @@ Organizada por domínios tecnológicos:
 
 ### 🔄 Cursos em Andamento
 
+<!-- CURRENT_COURSES_START -->
+
 | Curso | Plataforma | Progresso | Área | Conclusão Prevista |
 |-------|------------|-----------|------|-------------------|
-| Formação GitHub Certification - DIO | DIO | Em andamento | DevOps | TBD |
-| Imersão Cloud DevOps - Alura & Google Cloud | Alura | Em andamento | DevOps | TBD |
-| Formação Linux Fundamentals | DIO | ** 100% | Linux Infrastructure | TBD |
-| Getting Started: Cisco Packet Tracer | Cisco-NetAcad | ** 100% | Linux Infrastructure | TBD |
+| *Nenhum curso ativo no momento* | - | - | - | - |
+<!-- CURRENT_COURSES_END -->
 
 > 💡 **Quer sugerir um curso?** Sinta-se à vontade para abrir uma issue com recomendações!
 
@@ -158,4 +158,3 @@ Organizada por domínios tecnológicos:
 </table>
 
 > 🎯 **Foco Atual:** Consolidando conhecimentos em **Git/GitHub** e **Linux Infrastructure** antes de expandir para outras áreas
-

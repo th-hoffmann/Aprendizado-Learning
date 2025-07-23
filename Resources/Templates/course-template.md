@@ -7,6 +7,7 @@
 - **Data de Conclusão:** [DD/MM/AAAA]
 - **Carga Horária:** [XX horas]
 - **Modalidade:** [Presencial/Online/Híbrido]
+- **Link do Curso:** [Link do Curso]
 
 ## 🎯 Objetivos de Aprendizado
 - [Objetivo 1]

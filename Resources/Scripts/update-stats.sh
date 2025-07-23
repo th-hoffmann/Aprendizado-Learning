@@ -33,7 +33,8 @@ area_count=6
 # Função para detectar tipo de atividade pelo diretório
 get_activity_type() {
     local file_path="$1"
-    local parent_dir=$(basename "$(dirname "$file_path")")
+    local parent_dir
+    parent_dir=$(basename "$(dirname "$file_path")")
     
     case "$parent_dir" in
         "Certifications") echo "certification" ;;
@@ -72,44 +73,92 @@ for area_dir in "$LEARNING_DIR"/*; do
         # Atualizar badges por área no README inglês
         case "$area_name" in
             "DevOps")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Activities<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Activities<\/p>/" "$README_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/DevOps-[0-9]*%20Activity/DevOps-${total_activities}%20Activity/" "$README_FILE"
+                else
+                    sed -i "s/DevOps-[0-9]*%20Activities\?/DevOps-${total_activities}%20Activities/" "$README_FILE"
+                fi
                 ;;
             "Cloud Computing")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Activities<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Activities<\/p>/" "$README_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Cloud%20Computing-[0-9]*%20Activity/Cloud%20Computing-${total_activities}%20Activity/" "$README_FILE"
+                else
+                    sed -i "s/Cloud%20Computing-[0-9]*%20Activities\?/Cloud%20Computing-${total_activities}%20Activities/" "$README_FILE"
+                fi
                 ;;
             "Security")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Activities<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Activities<\/p>/" "$README_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Security-[0-9]*%20Activity/Security-${total_activities}%20Activity/" "$README_FILE"
+                else
+                    sed -i "s/Security-[0-9]*%20Activities\?/Security-${total_activities}%20Activities/" "$README_FILE"
+                fi
                 ;;
             "Linux Infrastructure")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Activities<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Activities<\/p>/" "$README_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Activity/Linux%20Infrastructure-${total_activities}%20Activity/" "$README_FILE"
+                else
+                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Activities\?/Linux%20Infrastructure-${total_activities}%20Activities/" "$README_FILE"
+                fi
                 ;;
             "Programming")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Activities<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Activities<\/p>/" "$README_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Programming-[0-9]*%20Activity/Programming-${total_activities}%20Activity/" "$README_FILE"
+                else
+                    sed -i "s/Programming-[0-9]*%20Activities\?/Programming-${total_activities}%20Activities/" "$README_FILE"
+                fi
                 ;;
             "Data Science")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Activities<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Activities<\/p>/" "$README_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Data%20Science-[0-9]*%20Activity/Data%20Science-${total_activities}%20Activity/" "$README_FILE"
+                else
+                    sed -i "s/Data%20Science-[0-9]*%20Activities\?/Data%20Science-${total_activities}%20Activities/" "$README_FILE"
+                fi
                 ;;
         esac
         
         # Atualizar badges por área no README português
         case "$area_name" in
             "DevOps")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Atividades<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Atividades<\/p>/" "$README_PT_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/DevOps-[0-9]*%20Atividade/DevOps-${total_activities}%20Atividade/" "$README_PT_FILE"
+                else
+                    sed -i "s/DevOps-[0-9]*%20Atividades\?/DevOps-${total_activities}%20Atividades/" "$README_PT_FILE"
+                fi
                 ;;
             "Cloud Computing")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Atividades<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Atividades<\/p>/" "$README_PT_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Cloud%20Computing-[0-9]*%20Atividade/Cloud%20Computing-${total_activities}%20Atividade/" "$README_PT_FILE"
+                else
+                    sed -i "s/Cloud%20Computing-[0-9]*%20Atividades\?/Cloud%20Computing-${total_activities}%20Atividades/" "$README_PT_FILE"
+                fi
                 ;;
             "Security")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Atividades<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Atividades<\/p>/" "$README_PT_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Security-[0-9]*%20Atividade/Security-${total_activities}%20Atividade/" "$README_PT_FILE"
+                else
+                    sed -i "s/Security-[0-9]*%20Atividades\?/Security-${total_activities}%20Atividades/" "$README_PT_FILE"
+                fi
                 ;;
             "Linux Infrastructure")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Atividades<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Atividades<\/p>/" "$README_PT_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Atividade/Linux%20Infrastructure-${total_activities}%20Atividade/" "$README_PT_FILE"
+                else
+                    sed -i "s/Linux%20Infrastructure-[0-9]*%20Atividades\?/Linux%20Infrastructure-${total_activities}%20Atividades/" "$README_PT_FILE"
+                fi
                 ;;
             "Programming")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Atividades<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Atividades<\/p>/" "$README_PT_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Programming-[0-9]*%20Atividade/Programming-${total_activities}%20Atividade/" "$README_PT_FILE"
+                else
+                    sed -i "s/Programming-[0-9]*%20Atividades\?/Programming-${total_activities}%20Atividades/" "$README_PT_FILE"
+                fi
                 ;;
             "Data Science")
-                sed -i "s/<p style=\"margin: 5px 0; opacity: 0.9;\">.*Atividades<\/p>/<p style=\"margin: 5px 0; opacity: 0.9;\">$total_activities Atividades<\/p>/" "$README_PT_FILE"
+                if [ "$total_activities" -eq 1 ]; then
+                    sed -i "s/Data%20Science-[0-9]*%20Atividade/Data%20Science-${total_activities}%20Atividade/" "$README_PT_FILE"
+                else
+                    sed -i "s/Data%20Science-[0-9]*%20Atividades\?/Data%20Science-${total_activities}%20Atividades/" "$README_PT_FILE"
+                fi
                 ;;
         esac
     fi

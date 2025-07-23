@@ -42,7 +42,10 @@ Organized by technology domains:
 
 | Course | Platform | Progress | Area | Expected Completion |
 |--------|----------|----------|------|-------------------|
-| *No courses currently active* | - | - | - | - |
+| Formação GitHub Certification - DIO | DIO | Em andamento | DevOps | TBD |
+| Imersão Cloud DevOps - Alura & Google Cloud | Alura | Em andamento | DevOps | TBD |
+| Formação Linux Fundamentals | DIO | ** 100% | Linux Infrastructure | TBD |
+| Getting Started: Cisco Packet Tracer | Cisco-NetAcad | ** 100% | Linux Infrastructure | TBD |
 
 > 💡 **Want to suggest a course?** Feel free to open an issue with recommendations!
 
@@ -52,7 +55,7 @@ Organized by technology domains:
 
 <!-- Auto-generated badges -->
 [![Certifications](https://img.shields.io/badge/Certifications-0-success?style=flat-square&logo=certificate)](./Learning-Journey)
-[![Courses](https://img.shields.io/badge/Courses-3-blue?style=flat-square&logo=book)](./Learning-Journey)
+[![Courses](https://img.shields.io/badge/Courses-4-blue?style=flat-square&logo=book)](./Learning-Journey)
 [![Projects](https://img.shields.io/badge/Projects-0-orange?style=flat-square&logo=code)](./Learning-Journey)
 [![Learning Areas](https://img.shields.io/badge/Learning%20Areas-6-purple?style=flat-square&logo=target)](./Learning-Journey)
 [![Last Updated](https://img.shields.io/badge/Last%20Updated-July%202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)

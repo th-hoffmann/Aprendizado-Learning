@@ -1,5 +1,13 @@
 # Formação GitHub Certification - DIO
 
+![DIO](https://img.shields.io/badge/Platform-DIO-E6006F?style=flat-square)
+![Bootcamp](https://img.shields.io/badge/Type-Bootcamp-purple?style=flat-square&logo=rocket)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)
+![Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)
+![DevOps](https://img.shields.io/badge/Area-DevOps-FF6B6B?style=flat-square&logo=devopsag)
+
 ## 📋 Informações Gerais
 - **Instituição:** Digital Innovation One (DIO)
 - **Instrutor(es):** Elidiana Andrade

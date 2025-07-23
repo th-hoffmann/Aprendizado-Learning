@@ -10,8 +10,10 @@ generate_platform_badges() {
     local area="$3"
     
     # Converter para lowercase para comparação
-    local provider_lower=$(echo "$provider" | tr '[:upper:]' '[:lower:]')
-    local course_lower=$(echo "$course_name" | tr '[:upper:]' '[:lower:]')
+    local provider_lower
+    local course_lower
+    provider_lower=$(echo "$provider" | tr '[:upper:]' '[:lower:]')
+    course_lower=$(echo "$course_name" | tr '[:upper:]' '[:lower:]')
     
     # Array para armazenar badges
     local badges=()
@@ -20,7 +22,6 @@ generate_platform_badges() {
     case "$provider_lower" in
         *alura*)
             badges+=("![Alura](https://img.shields.io/badge/Platform-Alura-1976D2?style=flat-square)")
-            badges+=("![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)")
             badges+=("![Tech_Focus](https://img.shields.io/badge/Focus-Technology-blue?style=flat-square&logo=code)")
             badges+=("![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)")
             ;;
@@ -44,9 +45,9 @@ generate_platform_badges() {
             ;;
         *dio*)
             badges+=("![DIO](https://img.shields.io/badge/Platform-DIO-E6006F?style=flat-square)")
-            badges+=("![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)")
             badges+=("![Bootcamp](https://img.shields.io/badge/Type-Bootcamp-purple?style=flat-square&logo=rocket)")
-            badges+=("![Free](https://img.shields.io/badge/Cost-Free-green?style=flat-square&logo=gift)")
+            badges+=("![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)")
+            badges+=("![Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)")
             ;;
         *edx*)
             badges+=("![edX](https://img.shields.io/badge/Platform-edX-02262B?style=flat-square&logo=edx)")
@@ -54,7 +55,6 @@ generate_platform_badges() {
             ;;
         *freecodecamp*|*fcc*)
             badges+=("![FreeCodeCamp](https://img.shields.io/badge/Platform-FreeCodeCamp-0A0A23?style=flat-square)")
-            badges+=("![Free](https://img.shields.io/badge/Cost-Free-green?style=flat-square&logo=gift)")
             badges+=("![Open_Source](https://img.shields.io/badge/Type-Open_Source-success?style=flat-square&logo=open-source-initiative)")
             badges+=("![Project_Based](https://img.shields.io/badge/Method-Project_Based-blue?style=flat-square&logo=folder-open)")
             ;;
@@ -82,14 +82,12 @@ generate_platform_badges() {
             ;;
         *rocketseat*)
             badges+=("![Rocketseat](https://img.shields.io/badge/Platform-Rocketseat-8257E5?style=flat-square)")
-            badges+=("![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)")
             badges+=("![Modern_Stack](https://img.shields.io/badge/Focus-Modern_Stack-purple?style=flat-square&logo=rocket)")
             badges+=("![Community](https://img.shields.io/badge/Type-Community-orange?style=flat-square&logo=users)")
             ;;
-        *santander*|*santanderopenacademy*)
+        *santanderopenacademy*)
             badges+=("![Santander Open Academy](https://img.shields.io/badge/Platform-Santander_Open_Academy-EC0000?style=flat-square)")
             badges+=("![Banking](https://img.shields.io/badge/Sector-Banking-red?style=flat-square&logo=university)")
-            badges+=("![Free_Access](https://img.shields.io/badge/Cost-Free-green?style=flat-square&logo=gift)")
             badges+=("![Professional](https://img.shields.io/badge/Focus-Professional-blue?style=flat-square&logo=briefcase)")
             ;;
         *udacity*)
@@ -157,8 +155,10 @@ generate_certification_badges() {
     local provider="$2"
     local area="$3"
     
-    local provider_lower=$(echo "$provider" | tr '[:upper:]' '[:lower:]')
-    local cert_lower=$(echo "$cert_name" | tr '[:upper:]' '[:lower:]')
+    local provider_lower
+    local cert_lower
+    provider_lower=$(echo "$provider" | tr '[:upper:]' '[:lower:]')
+    cert_lower=$(echo "$cert_name" | tr '[:upper:]' '[:lower:]')
     
     local badges=()
     
@@ -169,7 +169,6 @@ generate_certification_badges() {
     case "$provider_lower" in
         *alura*)
             badges+=("![Alura](https://img.shields.io/badge/Provider-Alura-1976D2?style=flat-square)")
-            badges+=("![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)")
             badges+=("![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)")
             ;;
         *aws*)
@@ -194,15 +193,16 @@ generate_certification_badges() {
             ;;
         *dio*)
             badges+=("![DIO](https://img.shields.io/badge/Provider-DIO-E6006F?style=flat-square)")
-            badges+=("![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)")
             ;;
         *freecodecamp*|*fcc*)
             badges+=("![FreeCodeCamp](https://img.shields.io/badge/Provider-FreeCodeCamp-0A0A23?style=flat-square)")
-            badges+=("![Free](https://img.shields.io/badge/Cost-Free-green?style=flat-square&logo=gift)")
             badges+=("![Open_Source](https://img.shields.io/badge/Type-Open_Source-success?style=flat-square&logo=open-source-initiative)")
             ;;
-        *google*|*gcp*)
-            badges+=("![Google Cloud](https://img.shields.io/badge/Provider-Google_Cloud-4285F4?style=flat-square&logo=google-cloud)")
+        *google*cloud*|*gcp*)
+            badges+=("![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=flat-square&logo=google-cloud&logoColor=white)")
+            ;;
+        *imersão*|*immersion*)
+            badges+=("![Immersion](https://img.shields.io/badge/Type-Immersion-orange?style=flat-square&logo=diving)")
             ;;
         *microsoft*|*azure*)
             badges+=("![Microsoft](https://img.shields.io/badge/Provider-Microsoft-5E5E5E?style=flat-square&logo=microsoft)")
@@ -217,10 +217,9 @@ generate_certification_badges() {
             ;;
         *rocketseat*)
             badges+=("![Rocketseat](https://img.shields.io/badge/Provider-Rocketseat-8257E5?style=flat-square)")
-            badges+=("![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)")
             badges+=("![Modern_Stack](https://img.shields.io/badge/Focus-Modern_Stack-purple?style=flat-square&logo=rocket)")
             ;;
-        *santander*|*santanderopenacademy*)
+        *santanderopenacademy*)
             badges+=("![Santander Open Academy](https://img.shields.io/badge/Provider-Santander_Open_Academy-EC0000?style=flat-square)")
             badges+=("![Banking](https://img.shields.io/badge/Sector-Banking-red?style=flat-square&logo=university)")
             badges+=("![Professional](https://img.shields.io/badge/Focus-Professional-blue?style=flat-square&logo=briefcase)")
@@ -258,17 +257,21 @@ enhance_course_template() {
     local area="$4"
     
     # Gerar badges personalizados
-    local badges=$(generate_platform_badges "$provider" "$course_name" "$area")
+    local badges
+    badges=$(generate_platform_badges "$provider" "$course_name" "$area")
     
     # Adicionar badges no início do arquivo (após o título)
-    local temp_file=$(mktemp)
+    local temp_file
+    temp_file=$(mktemp)
     
     # Ler primeira linha (título)
-    head -n 1 "$course_file" > "$temp_file"
-    echo >> "$temp_file"
-    
-    # Adicionar badges personalizados
-    echo "$badges" >> "$temp_file"
+    {
+        head -n 1 "$course_file"
+        echo
+        
+        # Adicionar badges personalizados
+        echo "$badges"
+    } > "$temp_file"
     echo >> "$temp_file"
     
     # Adicionar resto do arquivo
@@ -287,24 +290,28 @@ enhance_certification_template() {
     local cert_date="$5"
     
     # Gerar badges personalizados
-    local badges=$(generate_certification_badges "$cert_name" "$provider" "$area")
+    local badges
+    badges=$(generate_certification_badges "$cert_name" "$provider" "$area")
     
     # Substituir placeholder de data
-    badges=$(echo "$badges" | sed "s/\[DD%2FMM%2FAAAA\]/${cert_date//\//%2F}/g")
+    badges=${badges//\[DD%2FMM%2FAAAA\]/${cert_date//\//%2F}}
     
     # Adicionar badges no arquivo
-    local temp_file=$(mktemp)
+    local temp_file
+    temp_file=$(mktemp)
     
     # Ler primeira linha (título)
-    head -n 1 "$cert_file" > "$temp_file"
-    echo >> "$temp_file"
-    
-    # Adicionar badges personalizados
-    echo "$badges" >> "$temp_file"
-    echo >> "$temp_file"
-    
-    # Adicionar resto do arquivo
-    tail -n +2 "$cert_file" >> "$temp_file"
+    {
+        head -n 1 "$cert_file"
+        echo
+        
+        # Adicionar badges personalizados
+        echo "$badges"
+        echo
+        
+        # Adicionar resto do arquivo
+        tail -n +2 "$cert_file"
+    } > "$temp_file"
     
     # Substituir arquivo original
     mv "$temp_file" "$cert_file"
@@ -313,7 +320,8 @@ enhance_certification_template() {
 # Função avançada para detectar tecnologias e frameworks
 detect_advanced_technologies() {
     local content="$1"
-    local content_lower=$(echo "$content" | tr '[:upper:]' '[:lower:]')
+    local content_lower
+    content_lower=$(echo "$content" | tr '[:upper:]' '[:lower:]')
     local tech_badges=()
     
     # Machine Learning / AI
@@ -440,6 +448,12 @@ detect_advanced_technologies() {
     if [[ "$content_lower" == *"jenkins"* ]]; then
         tech_badges+=("![Jenkins](https://img.shields.io/badge/jenkins-D24939.svg?&style=flat-square&logo=jenkins&logoColor=white)")
     fi
+    if [[ "$content_lower" == *"git"* ]] && [[ "$content_lower" != *"gitlab"* ]] && [[ "$content_lower" != *"github"* ]]; then
+        tech_badges+=("![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"github"* ]]; then
+        tech_badges+=("![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)")
+    fi
     if [[ "$content_lower" == *"gitlab"* ]]; then
         tech_badges+=("![GitLab](https://img.shields.io/badge/GitLab-330F63?style=flat-square&logo=gitlab&logoColor=white)")
     fi
@@ -509,6 +523,106 @@ detect_advanced_technologies() {
     fi
     if [[ "$content_lower" == *"prometheus"* ]]; then
         tech_badges+=("![Prometheus](https://img.shields.io/badge/-prometheus-E6522C?&style=flat-square&logo=prometheus&logoColor=white)")
+    fi
+    
+    # Networking & Security
+    if [[ "$content_lower" == *"ccna"* ]] || [[ "$content_lower" == *"ccnp"* ]] || [[ "$content_lower" == *"cisco certification"* ]]; then
+        tech_badges+=("![CCNA](https://img.shields.io/badge/Cisco-CCNA/CCNP-1BA0D7?style=flat-square&logo=cisco&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"network security"* ]] || [[ "$content_lower" == *"firewall"* ]]; then
+        tech_badges+=("![Network Security](https://img.shields.io/badge/Network-Security-red?style=flat-square&logo=shield&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"vlan"* ]] || [[ "$content_lower" == *"switching"* ]]; then
+        tech_badges+=("![VLAN](https://img.shields.io/badge/Network-VLAN-blue?style=flat-square&logo=network-wired)")
+    fi
+    if [[ "$content_lower" == *"bgp"* ]] || [[ "$content_lower" == *"ospf"* ]] || [[ "$content_lower" == *"routing"* ]]; then
+        tech_badges+=("![Routing Protocols](https://img.shields.io/badge/Routing-BGP/OSPF-green?style=flat-square&logo=router)")
+    fi
+    if [[ "$content_lower" == *"wireshark"* ]]; then
+        tech_badges+=("![Wireshark](https://img.shields.io/badge/Tool-Wireshark-1679A7?style=flat-square&logo=wireshark)")
+    fi
+    if [[ "$content_lower" == *"packet tracer"* ]]; then
+        tech_badges+=("![Packet Tracer](https://img.shields.io/badge/Tool-Packet_Tracer-1BA0D7?style=flat-square&logo=cisco)")
+    fi
+    if [[ "$content_lower" == *"vpn"* ]]; then
+        tech_badges+=("![VPN](https://img.shields.io/badge/Security-VPN-purple?style=flat-square&logo=openvpn)")
+    fi
+    
+    # Linux Distributions & Tools
+    if [[ "$content_lower" == *"centos"* ]] || [[ "$content_lower" == *"rhel"* ]] || [[ "$content_lower" == *"red hat"* ]]; then
+        tech_badges+=("![CentOS/RHEL](https://img.shields.io/badge/Linux-CentOS/RHEL-EE0000?style=flat-square&logo=redhat&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"debian"* ]]; then
+        tech_badges+=("![Debian](https://img.shields.io/badge/Linux-Debian-A81D33?style=flat-square&logo=debian&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"arch"* ]] && [[ "$content_lower" == *"linux"* ]]; then
+        tech_badges+=("![Arch Linux](https://img.shields.io/badge/Linux-Arch-1793D1?style=flat-square&logo=archlinux&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"bash"* ]] || [[ "$content_lower" == *"shell script"* ]]; then
+        tech_badges+=("![Bash](https://img.shields.io/badge/Shell-Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"systemd"* ]]; then
+        tech_badges+=("![Systemd](https://img.shields.io/badge/Linux-Systemd-FCC624?style=flat-square&logo=linux&logoColor=black)")
+    fi
+    if [[ "$content_lower" == *"lvm"* ]] || [[ "$content_lower" == *"logical volume"* ]]; then
+        tech_badges+=("![LVM](https://img.shields.io/badge/Storage-LVM-gray?style=flat-square&logo=harddisk)")
+    fi
+    if [[ "$content_lower" == *"kvm"* ]] || [[ "$content_lower" == *"qemu"* ]]; then
+        tech_badges+=("![KVM/QEMU](https://img.shields.io/badge/Virtualization-KVM/QEMU-orange?style=flat-square&logo=qemu)")
+    fi
+    
+    # Advanced DevOps
+    if [[ "$content_lower" == *"gitlab ci"* ]] || [[ "$content_lower" == *"gitlab-ci"* ]]; then
+        tech_badges+=("![GitLab CI/CD](https://img.shields.io/badge/CI/CD-GitLab-FC6D26?style=flat-square&logo=gitlab&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"circleci"* ]]; then
+        tech_badges+=("![CircleCI](https://img.shields.io/badge/CI/CD-CircleCI-343434?style=flat-square&logo=circleci&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"argocd"* ]] || [[ "$content_lower" == *"argo cd"* ]]; then
+        tech_badges+=("![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D?style=flat-square&logo=argo&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"helm"* ]]; then
+        tech_badges+=("![Helm](https://img.shields.io/badge/K8s-Helm-0F1689?style=flat-square&logo=helm&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"istio"* ]]; then
+        tech_badges+=("![Istio](https://img.shields.io/badge/Service_Mesh-Istio-466BB0?style=flat-square&logo=istio&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"vault"* ]] && [[ "$content_lower" == *"hashicorp"* ]]; then
+        tech_badges+=("![Vault](https://img.shields.io/badge/Secrets-Vault-000000?style=flat-square&logo=vault&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"consul"* ]]; then
+        tech_badges+=("![Consul](https://img.shields.io/badge/Service_Discovery-Consul-F24C53?style=flat-square&logo=consul&logoColor=white)")
+    fi
+    
+    # Infrastructure as Code
+    if [[ "$content_lower" == *"pulumi"* ]]; then
+        tech_badges+=("![Pulumi](https://img.shields.io/badge/IaC-Pulumi-8A3391?style=flat-square&logo=pulumi&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"cloudformation"* ]]; then
+        tech_badges+=("![CloudFormation](https://img.shields.io/badge/AWS-CloudFormation-FF9900?style=flat-square&logo=amazonwebservices&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"arm template"* ]] || [[ "$content_lower" == *"bicep"* ]]; then
+        tech_badges+=("![ARM Templates](https://img.shields.io/badge/Azure-ARM_Templates-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"vagrant"* ]]; then
+        tech_badges+=("![Vagrant](https://img.shields.io/badge/DevEnv-Vagrant-1563FF?style=flat-square&logo=vagrant&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"packer"* ]]; then
+        tech_badges+=("![Packer](https://img.shields.io/badge/Image_Builder-Packer-02A8EF?style=flat-square&logo=packer&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"chef"* ]]; then
+        tech_badges+=("![Chef](https://img.shields.io/badge/Config_Mgmt-Chef-F09820?style=flat-square&logo=chef&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"puppet"* ]]; then
+        tech_badges+=("![Puppet](https://img.shields.io/badge/Config_Mgmt-Puppet-FFAE1A?style=flat-square&logo=puppet&logoColor=white)")
+    fi
+    
+    # Cloud Native & Serverless
+    if [[ "$content_lower" == *"serverless"* ]] || [[ "$content_lower" == *"lambda"* ]]; then
+        tech_badges+=("![Serverless](https://img.shields.io/badge/Serverless-Lambda-FF9900?style=flat-square&logo=awslambda&logoColor=white)")
+    fi
+    if [[ "$content_lower" == *"api gateway"* ]]; then
+        tech_badges+=("![API Gateway](https://img.shields.io/badge/API-Gateway-purple?style=flat-square&logo=amazonapigateway)")
     fi
     
     # Retornar badges como string

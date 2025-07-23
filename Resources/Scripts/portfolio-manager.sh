@@ -30,9 +30,9 @@ print_message() {
 # Função para mostrar o menu principal
 show_main_menu() {
     clear
-    print_message $BLUE "======================================"
-    print_message $BLUE "    Learning Portfolio Manager"
-    print_message $BLUE "======================================"
+    print_message "$BLUE" "======================================"
+    print_message "$BLUE" "    Learning Portfolio Manager"
+    print_message "$BLUE" "======================================"
     echo
     echo "1) Adicionar Nova Certificação"
     echo "2) Adicionar Novo Curso"
@@ -43,13 +43,13 @@ show_main_menu() {
     echo "7) Gerar Relatório de Progresso"
     echo "8) Sair"
     echo
-    read -p "Escolha uma opção (1-8): " choice
+    read -rp "Escolha uma opção (1-8): " choice
 }
 
 # Função para escolher área de conhecimento
 choose_area() {
     echo
-    print_message $YELLOW "Áreas disponíveis:"
+    print_message "$YELLOW" "Áreas disponíveis:"
     echo "1) DevOps"
     echo "2) Cloud Computing"
     echo "3) Security"
@@ -57,7 +57,7 @@ choose_area() {
     echo "5) Programming"
     echo "6) Data Science"
     echo
-    read -p "Escolha a área (1-6): " area_choice
+    read -rp "Escolha a área (1-6): " area_choice
     
     case $area_choice in
         1) echo "01_DevOps" ;;
@@ -66,25 +66,26 @@ choose_area() {
         4) echo "04_Linux-Infrastructure" ;;
         5) echo "05_Programming" ;;
         6) echo "06_Data-Science" ;;
-        *) print_message $RED "Opção inválida"; return 1 ;;
+        *) print_message "$RED" "Opção inválida"; return 1 ;;
     esac
 }
 
 # Função para adicionar certificação
 add_certification() {
-    print_message $GREEN "=== Adicionar Nova Certificação ==="
+    print_message "$GREEN" "=== Adicionar Nova Certificação ==="
     
-    local area=$(choose_area)
-    if [ $? -ne 0 ]; then return 1; fi
+    local area
+    area=$(choose_area) || return 1
     
     echo
-    read -p "Nome da certificação: " cert_name
-    read -p "Certificadora: " cert_provider
-    read -p "Data de obtenção (DD/MM/AAAA): " cert_date
-    read -p "ID da credencial: " cert_id
+    read -rp "Nome da certificação: " cert_name
+    read -rp "Certificadora: " cert_provider
+    read -rp "Data de obtenção (DD/MM/AAAA): " cert_date
+    read -rp "ID da credencial: " cert_id
     
     # Criar nome do arquivo
-    local file_name=$(echo "$cert_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local file_name
+    file_name=$(echo "$cert_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local cert_dir="$JOURNEY_DIR/$area/Certifications"
     local cert_file="$cert_dir/${cert_date//\//-}_${cert_provider}_${file_name}.md"
     
@@ -103,25 +104,26 @@ add_certification() {
     # Aplicar badges personalizados
     enhance_certification_template "$cert_file" "$cert_provider" "$cert_name" "$area" "$cert_date"
     
-    print_message $GREEN "Certificação adicionada com badges personalizados: $cert_file"
-    read -p "Pressione Enter para continuar..."
+    print_message "$GREEN" "Certificação adicionada com badges personalizados: $cert_file"
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Função para adicionar curso
 add_course() {
-    print_message $GREEN "=== Adicionar Novo Curso ==="
+    print_message "$GREEN" "=== Adicionar Novo Curso ==="
     
-    local area=$(choose_area)
-    if [ $? -ne 0 ]; then return 1; fi
+    local area
+    area=$(choose_area) || return 1
     
     echo
-    read -p "Nome do curso: " course_name
-    read -p "Instituição: " course_provider
-    read -p "Data de início (DD/MM/AAAA): " start_date
-    read -p "Carga horária: " course_hours
+    read -rp "Nome do curso: " course_name
+    read -rp "Instituição: " course_provider
+    read -rp "Data de início (DD/MM/AAAA): " start_date
+    read -rp "Carga horária: " course_hours
     
     # Criar nome do arquivo
-    local file_name=$(echo "$course_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local file_name
+    file_name=$(echo "$course_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local course_dir="$JOURNEY_DIR/$area/Courses"
     local course_file="$course_dir/${start_date//\//-}_${course_provider}_${file_name}.md"
     
@@ -140,25 +142,26 @@ add_course() {
     # Aplicar badges personalizados baseados na plataforma e conteúdo
     enhance_course_template "$course_file" "$course_provider" "$course_name" "$area"
     
-    print_message $GREEN "Curso adicionado com badges inteligentes: $course_file"
-    read -p "Pressione Enter para continuar..."
+    print_message "$GREEN" "Curso adicionado com badges inteligentes: $course_file"
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Função para adicionar projeto
 add_project() {
-    print_message $GREEN "=== Adicionar Novo Projeto ==="
+    print_message "$GREEN" "=== Adicionar Novo Projeto ==="
     
-    local area=$(choose_area)
-    if [ $? -ne 0 ]; then return 1; fi
+    local area
+    area=$(choose_area) || return 1
     
     echo
-    read -p "Nome do projeto: " project_name
-    read -p "Status (Em andamento/Concluído/Planejado): " project_status
-    read -p "Data de início (DD/MM/AAAA): " start_date
-    read -p "Nível (Iniciante/Intermediário/Avançado): " project_level
+    read -rp "Nome do projeto: " project_name
+    read -rp "Status (Em andamento/Concluído/Planejado): " project_status
+    read -rp "Data de início (DD/MM/AAAA): " start_date
+    read -rp "Nível (Iniciante/Intermediário/Avançado): " project_level
     
     # Criar nome do arquivo
-    local file_name=$(echo "$project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local file_name
+    file_name=$(echo "$project_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local project_dir="$JOURNEY_DIR/$area/Projects"
     local project_file="$project_dir/${start_date//\//-}_${file_name}.md"
     
@@ -174,26 +177,27 @@ add_project() {
     sed -i "s|\[DD/MM/AAAA\]|$start_date|g" "$project_file"
     sed -i "s|\[Iniciante/Intermediário/Avançado\]|$project_level|g" "$project_file"
     
-    print_message $GREEN "Projeto adicionado: $project_file"
-    read -p "Pressione Enter para continuar..."
+    print_message "$GREEN" "Projeto adicionado: $project_file"
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Função para adicionar bootcamp
 add_bootcamp() {
-    print_message $GREEN "=== Adicionar Novo Bootcamp ==="
+    print_message "$GREEN" "=== Adicionar Novo Bootcamp ==="
     
-    local area=$(choose_area)
-    if [ $? -ne 0 ]; then return 1; fi
+    local area
+    area=$(choose_area) || return 1
     
     echo
-    read -p "Nome do bootcamp: " bootcamp_name
-    read -p "Instituição: " bootcamp_provider
-    read -p "Data de início (DD/MM/AAAA): " start_date
-    read -p "Duração (em semanas): " bootcamp_weeks
-    read -p "Carga horária total: " bootcamp_hours
+    read -rp "Nome do bootcamp: " bootcamp_name
+    read -rp "Instituição: " bootcamp_provider
+    read -rp "Data de início (DD/MM/AAAA): " start_date
+    read -rp "Duração (em semanas): " bootcamp_weeks
+    read -rp "Carga horária total: " bootcamp_hours
     
     # Criar nome do arquivo
-    local file_name=$(echo "$bootcamp_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local file_name
+    file_name=$(echo "$bootcamp_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local bootcamp_dir="$JOURNEY_DIR/$area/Bootcamps"
     local bootcamp_file="$bootcamp_dir/${start_date//\//-}_${bootcamp_provider}_${file_name}.md"
     
@@ -210,26 +214,27 @@ add_bootcamp() {
     sed -i "s|\[XX horas\]|$bootcamp_hours horas ($bootcamp_weeks semanas)|g" "$bootcamp_file"
     sed -i "s|# \[Nome do Curso\]|# $bootcamp_name|g" "$bootcamp_file"
     
-    print_message $GREEN "Bootcamp adicionado: $bootcamp_file"
-    read -p "Pressione Enter para continuar..."
+    print_message "$GREEN" "Bootcamp adicionado: $bootcamp_file"
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Função para adicionar workshop
 add_workshop() {
-    print_message $GREEN "=== Adicionar Novo Workshop ==="
+    print_message "$GREEN" "=== Adicionar Novo Workshop ==="
     
-    local area=$(choose_area)
-    if [ $? -ne 0 ]; then return 1; fi
+    local area
+    area=$(choose_area) || return 1
     
     echo
-    read -p "Nome do workshop: " workshop_name
-    read -p "Instituição/Plataforma: " workshop_provider
-    read -p "Data de realização (DD/MM/AAAA): " workshop_date
-    read -p "Duração: " workshop_duration
-    read -p "Formato (Online/Presencial): " workshop_format
+    read -rp "Nome do workshop: " workshop_name
+    read -rp "Instituição/Plataforma: " workshop_provider
+    read -rp "Data de realização (DD/MM/AAAA): " workshop_date
+    read -rp "Duração: " workshop_duration
+    read -rp "Formato (Online/Presencial): " workshop_format
     
     # Criar nome do arquivo
-    local file_name=$(echo "$workshop_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
+    local file_name
+    file_name=$(echo "$workshop_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/[^a-z0-9-]//g')
     local workshop_dir="$JOURNEY_DIR/$area/Workshops"
     local workshop_file="$workshop_dir/${workshop_date//\//-}_${workshop_provider}_${file_name}.md"
     
@@ -246,71 +251,74 @@ add_workshop() {
     sed -i "s|\[XX horas\]|$workshop_duration ($workshop_format)|g" "$workshop_file"
     sed -i "s|# \[Nome do Curso\]|# $workshop_name|g" "$workshop_file"
     
-    print_message $GREEN "Workshop adicionado: $workshop_file"
-    read -p "Pressione Enter para continuar..."
+    print_message "$GREEN" "Workshop adicionado: $workshop_file"
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Função para listar registros
 list_records() {
-    print_message $GREEN "=== Listar Registros por Área ==="
+    print_message "$GREEN" "=== Listar Registros por Área ==="
     
-    local area=$(choose_area)
-    if [ $? -ne 0 ]; then return 1; fi
+    local area
+    area=$(choose_area) || return 1
     
     local area_dir="$JOURNEY_DIR/$area"
     
     echo
-    print_message $BLUE "Registros em $area:"
+    print_message "$BLUE" "Registros em $area:"
     echo
     
     for category in Certifications Courses Bootcamps Workshops Projects; do
         local cat_dir="$area_dir/$category"
-        if [ -d "$cat_dir" ] && [ "$(ls -A $cat_dir 2>/dev/null)" ]; then
-            print_message $YELLOW "$category:"
-            ls -1 "$cat_dir"/*.md 2>/dev/null | sed 's/.*\//  - /' | sed 's/\.md$//'
+        if [ -d "$cat_dir" ] && [ "$(ls -A "$cat_dir" 2>/dev/null)" ]; then
+            print_message "$YELLOW" "$category:"
+            find "$cat_dir" -name "*.md" -printf "%f\n" 2>/dev/null | sed 's/^/  - /' | sed 's/\.md$//'
             echo
         fi
     done
     
-    read -p "Pressione Enter para continuar..."
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Função para gerar relatório
 generate_report() {
-    print_message $GREEN "=== Relatório de Progresso ==="
+    print_message "$GREEN" "=== Relatório de Progresso ==="
     echo
     
     local total_certs=0
     local total_courses=0
     local total_projects=0
     
-    print_message $BLUE "Resumo por Área:"
+    print_message "$BLUE" "Resumo por Área:"
     echo
     
     for area_dir in "$JOURNEY_DIR"/*/; do
         if [ -d "$area_dir" ]; then
             area_name=$(basename "$area_dir" | sed 's/^[0-9][0-9]_//' | tr '-' ' ')
             
-            local certs=$(find "$area_dir/Certifications" -name "*.md" 2>/dev/null | wc -l)
-            local courses=$(find "$area_dir/Courses" -name "*.md" 2>/dev/null | wc -l)
-            local projects=$(find "$area_dir/Projects" -name "*.md" 2>/dev/null | wc -l)
+            local certs
+            local courses
+            local projects
+            certs=$(find "$area_dir/Certifications" -name "*.md" 2>/dev/null | wc -l)
+            courses=$(find "$area_dir/Courses" -name "*.md" 2>/dev/null | wc -l)
+            projects=$(find "$area_dir/Projects" -name "*.md" 2>/dev/null | wc -l)
             
             total_certs=$((total_certs + certs))
             total_courses=$((total_courses + courses))
             total_projects=$((total_projects + projects))
             
-            printf "%-20s | Cert: %2d | Cursos: %2d | Projetos: %2d\n" "$area_name" $certs $courses $projects
+            printf "%-20s | Cert: %2d | Cursos: %2d | Projetos: %2d\n" "$area_name" "$certs" "$courses" "$projects"
         fi
     done
     
     echo
-    print_message $YELLOW "TOTAIS:"
+    print_message "$YELLOW" "TOTAIS:"
     printf "Certificações: %d\n" $total_certs
     printf "Cursos: %d\n" $total_courses
     printf "Projetos: %d\n" $total_projects
     echo
     
-    read -p "Pressione Enter para continuar..."
+    read -rp "Pressione Enter para continuar..."
 }
 
 # Loop principal
@@ -326,11 +334,11 @@ while true; do
         6) list_records ;;
         7) generate_report ;;
         8) 
-            print_message $GREEN "Obrigado por usar o Learning Portfolio Manager!"
+            print_message "$GREEN" "Obrigado por usar o Learning Portfolio Manager!"
             exit 0
             ;;
         *) 
-            print_message $RED "Opção inválida. Tente novamente."
+            print_message "$RED" "Opção inválida. Tente novamente."
             sleep 2
             ;;
     esac

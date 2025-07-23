@@ -1,12 +1,14 @@
 # Formação Linux Fundamentals
 
 ![DIO](https://img.shields.io/badge/Platform-DIO-E6006F?style=flat-square)
-![Brazilian](https://img.shields.io/badge/Origin-Brazilian-00FF7F?style=flat-square&logo=brazil)
 ![Bootcamp](https://img.shields.io/badge/Type-Bootcamp-purple?style=flat-square&logo=rocket)
-![Free](https://img.shields.io/badge/Cost-Free-green?style=flat-square&logo=gift)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white)
+![Bash](https://img.shields.io/badge/Shell-Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
+![Systemd](https://img.shields.io/badge/Linux-Systemd-FCC624?style=flat-square&logo=linux&logoColor=black)
 ![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)
+![Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)
+![Infrastructure](https://img.shields.io/badge/Area-Infrastructure-2ECC71?style=flat-square&logo=server)
 
 ## 📋 Informações da Formação
 - **Formação:** Linux Fundamentals

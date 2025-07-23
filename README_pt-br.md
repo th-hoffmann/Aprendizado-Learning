@@ -42,7 +42,10 @@ Organizada por domínios tecnológicos:
 
 | Curso | Plataforma | Progresso | Área | Conclusão Prevista |
 |-------|------------|-----------|------|-------------------|
-| *Nenhum curso ativo no momento* | - | - | - | - |
+| Formação GitHub Certification - DIO | DIO | Em andamento | DevOps | TBD |
+| Imersão Cloud DevOps - Alura & Google Cloud | Alura | Em andamento | DevOps | TBD |
+| Formação Linux Fundamentals | DIO | ** 100% | Linux Infrastructure | TBD |
+| Getting Started: Cisco Packet Tracer | Cisco-NetAcad | ** 100% | Linux Infrastructure | TBD |
 
 > 💡 **Quer sugerir um curso?** Sinta-se à vontade para abrir uma issue com recomendações!
 
@@ -52,7 +55,7 @@ Organizada por domínios tecnológicos:
 
 <!-- Auto-generated badges -->
 [![Certifications](https://img.shields.io/badge/Certifications-0-success?style=flat-square&logo=certificate)](./Learning-Journey)
-[![Courses](https://img.shields.io/badge/Courses-3-blue?style=flat-square&logo=book)](./Learning-Journey)
+[![Courses](https://img.shields.io/badge/Courses-4-blue?style=flat-square&logo=book)](./Learning-Journey)
 [![Projects](https://img.shields.io/badge/Projects-0-orange?style=flat-square&logo=code)](./Learning-Journey)
 [![Learning Areas](https://img.shields.io/badge/Learning%20Areas-6-purple?style=flat-square&logo=target)](./Learning-Journey)
 [![Last Updated](https://img.shields.io/badge/Last%20Updated-July%202025-lightgrey?style=flat-square&logo=calendar)](./Resources/Assets/badges/dashboard.md)
@@ -62,7 +65,7 @@ Organizada por domínios tecnológicos:
 ## 📊 Visão Geral das Áreas
 
 ### 🔧 DevOps
-![DevOps Progress](https://img.shields.io/badge/DevOps-1%20Atividade-FF7E5F?style=for-the-badge&logo=git&logoColor=white&labelColor=FF4500)
+![DevOps Progress](https://img.shields.io/badge/DevOps-2%20Atividades-FF7E5F?style=for-the-badge&logo=git&logoColor=white&labelColor=FF4500)
 ![Git](https://img.shields.io/badge/Git%2FGitHub-Concluído-28a745?style=flat-square&logo=git&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Em%20Desenvolvimento-ffc107?style=flat-square&logo=githubactions&logoColor=white)
 ![IaC](https://img.shields.io/badge/Infrastructure%20as%20Code-Planejado-6c757d?style=flat-square&logo=terraform&logoColor=white)
@@ -126,7 +129,7 @@ Organizada por domínios tecnológicos:
 <table>
 <tr>
 <td align="center">
-<img src="https://img.shields.io/badge/🔧%20DevOps-1%20Atividade-FF7E5F?style=for-the-badge" alt="DevOps"/>
+<img src="https://img.shields.io/badge/🔧%20DevOps-2%20Atividades-FF7E5F?style=for-the-badge" alt="DevOps"/>
 <br><sub><b>Git/GitHub, CI/CD, IaC</b></sub>
 </td>
 <td align="center">

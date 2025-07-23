@@ -1,11 +1,10 @@
 # Getting Started: Cisco Packet Tracer
 
-![Cisco NetAcad](https://img.shields.io/badge/Platform-Cisco_NetAcad-1BA0D7?style=flat-square&logo=cisco)
+![NetAcad](https://img.shields.io/badge/Platform-Cisco_NetAcad-1BA0D7?style=flat-square&logo=cisco)
 ![Networking](https://img.shields.io/badge/Focus-Networking-blue?style=flat-square&logo=network-wired)
-![Cisco](https://img.shields.io/badge/Cisco-1BA0D7?style=flat-square&logo=cisco&logoColor=white)
-![Packet Tracer](https://img.shields.io/badge/Tool-Packet_Tracer-orange?style=flat-square&logo=cisco)
+![Hands_On](https://img.shields.io/badge/Type-Hands_On-success?style=flat-square&logo=tools)
+![Packet Tracer](https://img.shields.io/badge/Tool-Packet_Tracer-1BA0D7?style=flat-square&logo=cisco)
 ![Portuguese](https://img.shields.io/badge/Language-Portuguese-green?style=flat-square&logo=language)
-![Free](https://img.shields.io/badge/Cost-Free-success?style=flat-square&logo=gift)
 ![Completed](https://img.shields.io/badge/Status-Completed-success?style=flat-square&logo=check-circle)
 
 ## 📋 Informações do Curso

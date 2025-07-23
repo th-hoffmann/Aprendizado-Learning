@@ -41,9 +41,9 @@ print_message() {
 print_section() {
     local title=$1
     echo
-    print_message $BLUE "========================================="
-    print_message $BLUE "$title"
-    print_message $BLUE "========================================="
+    print_message "$BLUE" "========================================="
+    print_message "$BLUE" "$title"
+    print_message "$BLUE" "========================================="
 }
 
 # Increment counters
@@ -63,14 +63,14 @@ validate_check() {
     local severity=${3:-"FAIL"}
     
     if [ "$condition" = "true" ]; then
-        print_message $GREEN "✓ $description"
+        print_message "$GREEN" "✓ $description"
         increment_check "PASS"
     else
         if [ "$severity" = "WARN" ]; then
-            print_message $YELLOW "⚠ $description"
+            print_message "$YELLOW" "⚠ $description"
             increment_check "WARN"
         else
-            print_message $RED "✗ $description"
+            print_message "$RED" "✗ $description"
             increment_check "FAIL"
         fi
     fi
@@ -165,7 +165,7 @@ validate_templates() {
                 fi
             done
             
-            validate_check "Template $template has proper markdown structure" "$(echo $has_structure)"
+            validate_check "Template $template has proper markdown structure" "$has_structure"
         fi
     done
 }
@@ -176,10 +176,12 @@ validate_readme_consistency() {
     
     # Check if root README files exist and have content
     if [ -f "README.md" ] && [ -f "README_pt-br.md" ]; then
-        local en_size=$(wc -l < "README.md")
-        local pt_size=$(wc -l < "README_pt-br.md")
+        local en_size
+        local pt_size
+        en_size=$(wc -l < "README.md")
+        pt_size=$(wc -l < "README_pt-br.md")
         
-        validate_check "Root README files have reasonable content (>10 lines)" "$([ $en_size -gt 10 ] && [ $pt_size -gt 10 ] && echo true || echo false)" "WARN"
+        validate_check "Root README files have reasonable content (>10 lines)" "$([ "$en_size" -gt 10 ] && [ "$pt_size" -gt 10 ] && echo true || echo false)" "WARN"
         
         # Check for learning journey structure mentions
         if grep -qi "learning.*journey\|portfolio\|curso\|certificat" "README.md"; then
@@ -233,15 +235,18 @@ validate_file_patterns() {
     print_section "VALIDATING FILE PATTERNS"
     
     # Check for common file patterns
-    local markdown_count=$(find Certificates -name "*.md" -type f | wc -l)
-    validate_check "Portfolio contains markdown files (>6)" "$([ $markdown_count -gt 6 ] && echo true || echo false)" "WARN"
+    local markdown_count
+    markdown_count=$(find Certificates -name "*.md" -type f | wc -l)
+    validate_check "Portfolio contains markdown files (>6)" "$([ "$markdown_count" -gt 6 ] && echo true || echo false)" "WARN"
     
     # Check for consistent naming in directories
     for dir in Certificates/*/; do
         if [ -d "$dir" ]; then
-            local dir_name=$(basename "$dir")
-            local readme_count=$(ls "$dir"README*.md 2>/dev/null | wc -l)
-            validate_check "Directory $dir_name has README files" "$([ $readme_count -ge 1 ] && echo true || echo false)" "WARN"
+            local dir_name
+            local readme_count
+            dir_name=$(basename "$dir")
+            readme_count=$(find "$dir" -maxdepth 1 -name "README*.md" -type f | wc -l)
+            validate_check "Directory $dir_name has README files" "$([ "$readme_count" -ge 1 ] && echo true || echo false)" "WARN"
         fi
     done
 }
@@ -252,33 +257,33 @@ generate_report() {
     
     local success_rate=$((PASSED_CHECKS * 100 / TOTAL_CHECKS))
     
-    print_message $BLUE "Total Checks: $TOTAL_CHECKS"
-    print_message $GREEN "Passed: $PASSED_CHECKS"
-    print_message $RED "Failed: $FAILED_CHECKS"
-    print_message $YELLOW "Warnings: $WARNING_CHECKS"
-    print_message $BLUE "Success Rate: ${success_rate}%"
+    print_message "$BLUE" "Total Checks: $TOTAL_CHECKS"
+    print_message "$GREEN" "Passed: $PASSED_CHECKS"
+    print_message "$RED" "Failed: $FAILED_CHECKS"
+    print_message "$YELLOW" "Warnings: $WARNING_CHECKS"
+    print_message "$BLUE" "Success Rate: ${success_rate}%"
     
     echo
     
-    if [ $FAILED_CHECKS -eq 0 ]; then
-        print_message $GREEN "🎉 VALIDATION COMPLETED SUCCESSFULLY!"
-        print_message $GREEN "Your Learning Portfolio is well-structured and consistent."
-        if [ $WARNING_CHECKS -gt 0 ]; then
-            print_message $YELLOW "Note: There are $WARNING_CHECKS warnings that you may want to address."
+    if [ "$FAILED_CHECKS" -eq 0 ]; then
+        print_message "$GREEN" "🎉 VALIDATION COMPLETED SUCCESSFULLY!"
+        print_message "$GREEN" "Your Learning Portfolio is well-structured and consistent."
+        if [ "$WARNING_CHECKS" -gt 0 ]; then
+            print_message "$YELLOW" "Note: There are $WARNING_CHECKS warnings that you may want to address."
         fi
         return 0
     else
-        print_message $RED "❌ VALIDATION FAILED!"
-        print_message $RED "There are $FAILED_CHECKS critical issues that need to be addressed."
-        print_message $YELLOW "Please fix the failed checks and run validation again."
+        print_message "$RED" "❌ VALIDATION FAILED!"
+        print_message "$RED" "There are $FAILED_CHECKS critical issues that need to be addressed."
+        print_message "$YELLOW" "Please fix the failed checks and run validation again."
         return 1
     fi
 }
 
 # Main execution
 main() {
-    print_message $BLUE "Starting Learning Portfolio Validation..."
-    print_message $BLUE "Working Directory: $(pwd)"
+    print_message "$BLUE" "Starting Learning Portfolio Validation..."
+    print_message "$BLUE" "Working Directory: $(pwd)"
     echo
     
     validate_structure

@@ -16,9 +16,10 @@ extract_course_info() {
     local area="$2"
     
     if [ -f "$file" ]; then
-        local course_name=$(grep "^# " "$file" | head -1 | sed 's/^# //')
-        local platform=$(basename "$file" | cut -d'_' -f2)
-        local start_date=$(basename "$file" | cut -d'_' -f1)
+        local course_name
+        local platform
+        course_name=$(grep "^# " "$file" | head -1 | sed 's/^# //')
+        platform=$(basename "$file" | cut -d'_' -f2)
         local progress="Em andamento"
         
         # Tentar extrair progresso do arquivo
@@ -44,7 +45,7 @@ for area_dir in "$LEARNING_DIR"/*; do
                 while IFS= read -r file; do
                     if [ -n "$file" ]; then
                         # Verificar se arquivo é recente (últimos 180 dias) ou contém "em andamento"
-                        if [ $(find "$file" -mtime -180) ] || grep -qi "em andamento\|in progress\|ongoing" "$file" 2>/dev/null; then
+                        if [ "$(find "$file" -mtime -180)" ] || grep -qi "em andamento\|in progress\|ongoing" "$file" 2>/dev/null; then
                             course_info=$(extract_course_info "$file" "$area_name")
                             if [ -n "$course_info" ]; then
                                 current_courses+=("$course_info")
@@ -74,15 +75,19 @@ generate_english_table() {
     fi
     
     # Substituir tabela no README
-    local start_line=$(grep -n "| Course | Platform | Progress | Area |" "$README_FILE" | cut -d: -f1)
-    local end_line=$(grep -n "> 💡" "$README_FILE" | cut -d: -f1)
+    local start_line
+    local end_line
+    start_line=$(grep -n "| Course | Platform | Progress | Area |" "$README_FILE" | cut -d: -f1)
+    end_line=$(grep -n "> 💡" "$README_FILE" | cut -d: -f1)
     
     if [ -n "$start_line" ] && [ -n "$end_line" ]; then
         # Criar arquivo temporário com a nova seção
-        head -n $((start_line - 1)) "$README_FILE" > "/tmp/readme_temp.md"
-        cat "$temp_file" >> "/tmp/readme_temp.md"
-        echo "" >> "/tmp/readme_temp.md"
-        tail -n +$end_line "$README_FILE" >> "/tmp/readme_temp.md"
+        {
+            head -n $((start_line - 1)) "$README_FILE"
+            cat "$temp_file"
+            echo ""
+            tail -n +"$end_line" "$README_FILE"
+        } > "/tmp/readme_temp.md"
         
         mv "/tmp/readme_temp.md" "$README_FILE"
     fi
@@ -108,14 +113,18 @@ generate_portuguese_table() {
     
     # Substituir tabela no README português se existir
     if [ -f "$README_PT_FILE" ]; then
-        local start_line=$(grep -n "| Curso | Plataforma | Progresso |" "$README_PT_FILE" | cut -d: -f1)
-        local end_line=$(grep -n "> 💡" "$README_PT_FILE" | cut -d: -f1)
+        local start_line
+        local end_line
+        start_line=$(grep -n "| Curso | Plataforma | Progresso |" "$README_PT_FILE" | cut -d: -f1)
+        end_line=$(grep -n "> 💡" "$README_PT_FILE" | cut -d: -f1)
         
         if [ -n "$start_line" ] && [ -n "$end_line" ]; then
-            head -n $((start_line - 1)) "$README_PT_FILE" > "/tmp/readme_pt_temp.md"
-            cat "$temp_file" >> "/tmp/readme_pt_temp.md"
-            echo "" >> "/tmp/readme_pt_temp.md"
-            tail -n +$end_line "$README_PT_FILE" >> "/tmp/readme_pt_temp.md"
+            {
+                head -n $((start_line - 1)) "$README_PT_FILE"
+                cat "$temp_file"
+                echo ""
+                tail -n +"$end_line" "$README_PT_FILE"
+            } > "/tmp/readme_pt_temp.md"
             
             mv "/tmp/readme_pt_temp.md" "$README_PT_FILE"
         fi

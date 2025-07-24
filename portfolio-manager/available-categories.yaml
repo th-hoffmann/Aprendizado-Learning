@@ -1,0 +1,88 @@
+# Portfolio Learning Categories
+# Available categories for portfolio structure configuration
+
+categories:
+  - name: "Desenvolvimento de Software"
+    emoji: "💻"
+    id: "dev-software"
+    color: "#43E97B"
+    description: "Desenvolvimento web, mobile, desktop e DevOps"
+    subcategories:
+      - "Frontend (HTML, CSS, JavaScript, frameworks, UX/UI)"
+      - "Backend (Linguagens, frameworks, APIs, microsserviços)"
+      - "Mobile (Android, iOS, Híbrido)"
+      - "Desktop (Linguagens, frameworks)"
+      - "DevOps & Automação (CI/CD, containers, orquestração, scripting)"
+      - "Engenharia de Software (Padrões de projeto, arquitetura, testes)"
+
+  - name: "Dados e Inteligência Artificial"
+    emoji: "🤖"
+    id: "dados-ia"
+    color: "#FA709A"
+    description: "Data Science, ML, AI e Business Intelligence"
+    subcategories:
+      - "Análise de Dados (SQL, Python/R para análise, visualização de dados)"
+      - "Ciência de Dados (Machine Learning, Deep Learning, Estatística)"
+      - "Engenharia de Dados (ETL, Data Lakes, Big Data)"
+      - "Business Intelligence (Ferramentas BI, Dashboards)"
+      - "Inteligência Artificial (NLP, Visão Computacional, Agentes Inteligentes)"
+
+  - name: "Infraestrutura e Cloud Computing"
+    emoji: "☁️"
+    id: "infra-cloud"
+    color: "#667EEA"
+    description: "Cloud, sistemas operacionais, redes e virtualização"
+    subcategories:
+      - "Sistemas Operacionais (Linux, Windows Server, Virtualização)"
+      - "Redes (Fundamentos, segurança de rede, protocolos)"
+      - "Cloud (AWS, Azure, Google Cloud, multi-cloud, serverless)"
+      - "Virtualização e Contêineres (Docker, Kubernetes)"
+      - "Monitoramento e Observabilidade (Ferramentas, logging)"
+
+  - name: "Segurança da Informação"
+    emoji: "🔒"
+    id: "seguranca"
+    color: "#F093FB"
+    description: "Cybersegurança, compliance e melhores práticas"
+    subcategories:
+      - "Segurança de Rede (Firewalls, IDS/IPS, VPNs)"
+      - "Segurança de Aplicações (Web, Mobile, testes de penetração)"
+      - "Análise de Vulnerabilidades e Malware"
+      - "Criptografia e PKI"
+      - "Governança, Risco e Compliance (GRC, LGPD, ISO 27001)"
+      - "Resposta a Incidentes e Forense Digital"
+
+  - name: "Gestão, Metodologias e Produto"
+    emoji: "📊"
+    id: "gestao"
+    color: "#FF7E5F"
+    description: "Gestão de projetos, metodologias ágeis e produto"
+    subcategories:
+      - "Gestão de Projetos (Tradicional, Ágil, Scrum, Kanban)"
+      - "Liderança e Equipes"
+      - "Análise de Negócios e Requisitos"
+      - "Gestão de Produto (Product Owner, Product Manager)"
+      - "Qualidade de Software (Testes, QA)"
+
+  - name: "Fundamentos e Habilidades Essenciais"
+    emoji: "🧠"
+    id: "fundamentos"
+    color: "#4FACFE"
+    description: "Base teórica e habilidades fundamentais em TI"
+    subcategories:
+      - "Lógica de Programação e Algoritmos"
+      - "Estrutura de Dados"
+      - "Matemática e Estatística para TI"
+      - "Pensamento Computacional"
+      - "Versionamento de Código (Git, GitHub)"
+      - "Resolução de Problemas e Debugging"
+      - "Comunicação Técnica e Documentação"
+
+# Configuration metadata
+metadata:
+  version: "1.0"
+  total_categories: 6
+  min_selection: 3
+  max_selection: 6
+  default_subcategories: true
+  extensible: true
